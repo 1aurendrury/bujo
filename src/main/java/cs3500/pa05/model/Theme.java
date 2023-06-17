@@ -9,4 +9,11 @@ public class Theme {
   Color fontColor;
   String fontType;
   List<Image> icons;
+
+  public Theme(String theme, Color fontColor, String fontType, List<Image> icons) {
+    this.theme = theme;
+    this.fontColor = fontColor;
+    this.fontType = fontType;
+    this.icons = icons;
+  }
 }

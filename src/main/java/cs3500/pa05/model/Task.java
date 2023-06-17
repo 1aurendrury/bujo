@@ -5,4 +5,11 @@ public class Task {
   String desc;
   String day;
   boolean isComplete;
+
+  public Task(String name, String desc, String day, boolean isComplete) {
+    this.name = name;
+    this.desc = desc;
+    this.day = day;
+    this.isComplete = false;
+  }
 }

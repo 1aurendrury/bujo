@@ -1,5 +1,6 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.model.Day;
 import java.util.List;
 import javafx.concurrent.Task;
 import javafx.scene.control.Button;

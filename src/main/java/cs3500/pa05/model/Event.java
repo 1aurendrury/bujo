@@ -22,4 +22,12 @@ public class Event {
     this.startTime = startTime;
     this.duration = duration;
   }
+
+  public Event (String name, String desc, String day, int startTime, double duration) {
+    this.name = name;
+    this.desc = desc;
+    this.day = day;
+    this.startTime = startTime;
+    this.duration = duration;
+  }
 }
