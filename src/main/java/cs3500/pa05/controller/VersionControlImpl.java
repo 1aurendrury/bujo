@@ -11,12 +11,12 @@ public class VersionControlImpl implements VersionControl {
   }
 
   @Override
-  public void save() {
-
+  public void save(String path) {
+    controller.handleSave(path);
   }
 
   @Override
-  public void open() {
-
+  public void open(String path) {
+    controller.handleOpenFile(path);
   }
 }

@@ -9,6 +9,6 @@ public record DayJSON(
     @JsonProperty("events") List<Event> events,
     @JsonProperty("tasks") List<Task> tasks,
     @JsonProperty("maxEvents") int maxEvents,
-    @JsonProperty("events") int maxTasks) {
+    @JsonProperty("maxTasks") int maxTasks) {
 
 }
