@@ -25,7 +25,7 @@ public class ControllerImpl implements Controller {
   private HBox controls;
   private String path;
 
-  ControllerImpl(List<Day> days, List<Task> taskQueue, FileJSON file, String path) {
+  public ControllerImpl(List<Day> days, List<Task> taskQueue, FileJSON file, String path) {
     this.file = file;
     this.taskQueue = taskQueue;
     this.currentTheme = new Menu("Choose the theme");

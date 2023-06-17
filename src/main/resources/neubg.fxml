@@ -17,14 +17,14 @@
 <Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="750.0" prefWidth="1371.0">
       <children>
-         <ImageView fitHeight="752.0" fitWidth="1407.0">
+         <ImageView fitHeight="800.0" fitWidth="1473.0">
             <image>
-               <Image url="@../../../Downloads/dbg.jpg" />
+               <Image url="neubg.jpg" />
             </image>
          </ImageView>
          <VBox layoutX="7.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" blendMode="LIGHTEN" prefHeight="45.0" prefWidth="172.0" text="Sunday" textFill="WHITE">
+               <Label alignment="CENTER" blendMode="LIGHTEN" prefHeight="45.0" prefWidth="172.0" text="Sunday" textFill="RED">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
@@ -34,7 +34,7 @@
                      <AnchorPane prefHeight="301.0" prefWidth="173.0">
                         <children>
                            <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                           <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
+                           <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="RED">
                               <font>
                                  <Font name="Rockwell" size="18.0" />
                               </font>
@@ -48,7 +48,7 @@
                      <AnchorPane prefHeight="301.0" prefWidth="173.0">
                         <children>
                            <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                           <Label layoutX="2.0" prefHeight="32.0" prefWidth="60.0" text="Events" textFill="WHITE">
+                           <Label layoutX="2.0" prefHeight="32.0" prefWidth="60.0" text="Events" textFill="RED">
                               <font>
                                  <Font name="Rockwell" size="18.0" />
                               </font>
@@ -64,7 +64,7 @@
          </VBox>
          <VBox layoutX="180.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Monday" textFill="WHITE">
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Monday" textFill="RED">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
@@ -72,7 +72,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -82,7 +82,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="2.0" prefHeight="32.0" prefWidth="60.0" text="Events" textFill="WHITE">
+                     <Label layoutX="2.0" prefHeight="32.0" prefWidth="60.0" text="Events" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -93,7 +93,7 @@
          </VBox>
          <VBox layoutX="353.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Tuesday" textFill="WHITE">
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Tuesday" textFill="RED">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
@@ -101,7 +101,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -111,7 +111,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="1.0" prefHeight="32.0" prefWidth="61.0" text="Events" textFill="WHITE">
+                     <Label layoutX="1.0" prefHeight="32.0" prefWidth="61.0" text="Events" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -122,7 +122,7 @@
          </VBox>
          <VBox layoutX="526.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Wednesday" textFill="WHITE">
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Wednesday" textFill="RED">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
@@ -130,7 +130,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -140,7 +140,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="2.0" prefHeight="32.0" prefWidth="60.0" text="Events" textFill="WHITE">
+                     <Label layoutX="2.0" prefHeight="32.0" prefWidth="60.0" text="Events" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -151,7 +151,7 @@
          </VBox>
          <VBox layoutX="699.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Thursday" textFill="WHITE">
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Thursday" textFill="RED">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
@@ -159,7 +159,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -169,7 +169,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label prefHeight="32.0" prefWidth="62.0" text="Events" textFill="WHITE">
+                     <Label prefHeight="32.0" prefWidth="62.0" text="Events" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -180,7 +180,7 @@
          </VBox>
          <VBox layoutX="872.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Friday" textFill="WHITE">
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Friday" textFill="RED">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
@@ -188,7 +188,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -198,7 +198,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="-1.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="WHITE">
+                     <Label layoutX="-1.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -209,7 +209,7 @@
          </VBox>
          <VBox layoutX="1045.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Saturday" textFill="WHITE">
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Saturday" textFill="RED">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
@@ -217,7 +217,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -227,7 +227,7 @@
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="1.0" prefHeight="32.0" prefWidth="61.0" text="Events" textFill="WHITE">
+                     <Label layoutX="1.0" prefHeight="32.0" prefWidth="61.0" text="Events" textFill="RED">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -245,7 +245,7 @@
          </ChoiceBox>
          <VBox layoutX="1231.0" layoutY="36.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Tasks Queue" textFill="WHITE">
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Tasks Queue" textFill="RED">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
