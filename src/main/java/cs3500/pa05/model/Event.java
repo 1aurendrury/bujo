@@ -19,7 +19,11 @@ public class Event {
     this.name = name;
     this.desc = desc;
     this.day = day;
-    this.startTime = startTime;
+    if (startTime >= 1 && startTime <= 24) {
+      this.startTime = startTime;
+    } else {
+      throw new IllegalArgumentException("Start time must be between 1 and 24, inclusive.");
+    }
     this.duration = duration;
   }
 
@@ -27,7 +31,11 @@ public class Event {
     this.name = name;
     this.desc = desc;
     this.day = day;
-    this.startTime = startTime;
+    if (startTime >= 1 && startTime <= 24) {
+      this.startTime = startTime;
+    } else {
+      throw new IllegalArgumentException("Start time must be between 1 and 24, inclusive.");
+    }
     this.duration = duration;
   }
 }
