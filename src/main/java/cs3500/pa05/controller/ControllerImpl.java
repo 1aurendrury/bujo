@@ -1,37 +1,38 @@
 package cs3500.pa05.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import cs3500.pa05.model.BujoFile;
 import cs3500.pa05.model.Day;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
-import cs3500.pa05.model.File;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Menu;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 
 public class ControllerImpl implements Controller {
-  private File file;
+  private BujoFile bujoFile;
   private Button save;
   private Button openFile;
   private Button addEvent;
   private Button addTask;
   private List<Task> taskQueue;
-  private Menu currentTheme;
+  private ComboBox<String> themePicker;
+  private String theme;
   private HBox versionControls;
   private HBox addControls;
   private Button settings;
   private String path;
 
-  public ControllerImpl(List<Day> days, List<Task> taskQueue, File file, String path) {
-    this.file = file;
+  public ControllerImpl(List<Day> days, List<Task> taskQueue, BujoFile bujoFile, String path) {
+    this.bujoFile = bujoFile;
     this.taskQueue = taskQueue;
-    this.currentTheme = new Menu("Choose the theme");
     this.path = path;
   }
 
@@ -66,6 +67,11 @@ public class ControllerImpl implements Controller {
     settings.setPrefHeight(25);
     settings.setOnAction(e -> handleSettings());
 
+    themePicker = new ComboBox<>();
+    themePicker.getItems().addAll("Light Theme", "Dark Theme");
+    themePicker.setValue("Light Theme");
+    themePicker.setOnAction(e -> handleThemeChange(themePicker.getValue()));
+
     addControls.getChildren().addAll(addEvent, addTask);
     versionControls.getChildren().addAll(save, openFile);
   }
@@ -73,21 +79,22 @@ public class ControllerImpl implements Controller {
   void handleSave(String path) {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
-      java.io.File outputFile = new java.io.File(path);
-      objectMapper.writeValue(outputFile, file);
+      File file = new File(path);
+      objectMapper.writeValue(file, this.bujoFile);
+      System.out.println("Saved successfully.");
     } catch (IOException e) {
-      handleWarning("Unable to save the file.");
+      System.out.println("Failed to save the file: " + e.getMessage());
     }
   }
 
   void handleOpenFile(String path) {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
-      java.io.File inputFile = new java.io.File(path);
-      this.file = objectMapper.readValue(inputFile, File.class);
-
+      File file = new File(path);
+      this.bujoFile = objectMapper.readValue(file, BujoFile.class);
+      System.out.println("File opened successfully.");
     } catch (IOException e) {
-      handleWarning("Unable to open the file.");
+      System.out.println("Failed to open the file: " + e.getMessage());
     }
   }
 
@@ -185,7 +192,7 @@ public class ControllerImpl implements Controller {
             if (durationResult.isPresent()) {
               double duration = Double.parseDouble(durationResult.get());
 
-              Day currentDay = file.days.get(file.days.size() - 1);
+              Day currentDay = bujoFile.days.get(bujoFile.days.size() - 1);
 
               if (currentDay != null) {
                 Event newEvent = new Event(name, desc, day, startTime, duration);
@@ -223,13 +230,13 @@ public class ControllerImpl implements Controller {
   }
 
   void handleMaxTasksEvents(int maxTasks, int maxEvents) {
-    file.setMaxEvents(maxEvents);
-    file.setMaxTasks(maxTasks);
+    bujoFile.setMaxEvents(maxEvents);
+    bujoFile.setMaxTasks(maxTasks);
     handleSave(path);
   }
 
   void handleThemeChange(String theme) {
-    file.setTheme(theme);
+    this.theme = theme;
     handleSave(path);
   }
 

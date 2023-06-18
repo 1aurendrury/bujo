@@ -5,7 +5,7 @@
 
 
 <!--
-    This is the CheckStyle config file for CS3500 for Summer 2023.  It is almost 100% based on
+    This is the CheckStyle config bujoFile for CS3500 for Summer 2023.  It is almost 100% based on
     Google's Java Style Guide linked in the comment section below.
 -->
 
@@ -16,7 +16,7 @@
     Checkstyle is very configurable. Be sure to read the documentation at
     http://checkstyle.org (or in your downloaded distribution).
 
-    To completely disable a check, just comment it out or delete it from the file.
+    To completely disable a check, just comment it out or delete it from the bujoFile.
     To suppress certain violations please review suppression filters.
 
     Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
@@ -37,7 +37,7 @@
     </module>
     <!-- https://checkstyle.org/config_filters.html#SuppressionFilter -->
     <module name="SuppressionFilter">
-        <property name="file" value="${org.checkstyle.google.suppressionfilter.config}"
+        <property name="bujoFile" value="${org.checkstyle.google.suppressionfilter.config}"
                   default="checkstyle-suppressions.xml" />
         <property name="optional" value="true"/>
     </module>
@@ -367,7 +367,7 @@
         </module>
         <!-- https://checkstyle.org/config_filters.html#SuppressionXpathFilter -->
         <module name="SuppressionXpathFilter">
-            <property name="file" value="${org.checkstyle.google.suppressionxpathfilter.config}"
+            <property name="bujoFile" value="${org.checkstyle.google.suppressionxpathfilter.config}"
                       default="checkstyle-xpath-suppressions.xml" />
             <property name="optional" value="true"/>
         </module>

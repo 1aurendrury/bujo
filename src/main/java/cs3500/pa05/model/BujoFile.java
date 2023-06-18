@@ -1,10 +1,9 @@
 package cs3500.pa05.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import cs3500.pa05.model.Day;
 import java.util.List;
 
-public class File {
+public class BujoFile {
   @JsonProperty("theme")
   private String theme;
 
@@ -20,7 +19,7 @@ public class File {
   @JsonProperty("max-events")
   private int maxEvents;
 
-  public File(
+  public BujoFile(
       @JsonProperty("theme") String theme,
       @JsonProperty("name") String name,
       @JsonProperty("days") List<Day> days,
