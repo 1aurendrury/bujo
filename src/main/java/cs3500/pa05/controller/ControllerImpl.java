@@ -15,6 +15,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class ControllerImpl implements Controller {
   private BujoFile bujoFile;
@@ -50,7 +52,7 @@ public class ControllerImpl implements Controller {
     openFile = new Button("Open");
     openFile.setPrefWidth(50);
     openFile.setPrefHeight(25);
-    openFile.setOnAction(e -> handleOpenFile(path));
+    openFile.setOnAction(e -> handleOpenFile());
 
     addEvent = new Button("Add Event +");
     addEvent.setPrefWidth(50);
@@ -87,14 +89,25 @@ public class ControllerImpl implements Controller {
     }
   }
 
-  void handleOpenFile(String path) {
+  void handleOpenFile() {
     ObjectMapper objectMapper = new ObjectMapper();
-    try {
-      File file = new File(path);
-      this.bujoFile = objectMapper.readValue(file, BujoFile.class);
-      System.out.println("File opened successfully.");
-    } catch (IOException e) {
-      System.out.println("Failed to open the file: " + e.getMessage());
+
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files",
+        "*.json"));
+
+    Stage primaryStage = new Stage();
+    File selectedFile = fileChooser.showOpenDialog(primaryStage);
+
+    if (selectedFile != null) {
+      try {
+        BujoFile bujoFile = objectMapper.readValue(selectedFile, BujoFile.class);
+
+      } catch (IOException e) {
+        System.err.println("Failed to open the file: " + e.getMessage());
+      }
+    } else {
+      System.err.println("No file chosen.");
     }
   }
 

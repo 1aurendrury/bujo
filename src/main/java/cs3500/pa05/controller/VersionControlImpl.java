@@ -17,6 +17,6 @@ public class VersionControlImpl implements VersionControl {
 
   @Override
   public void open(String path) {
-    controller.handleOpenFile(path);
+    controller.handleOpenFile();
   }
 }
