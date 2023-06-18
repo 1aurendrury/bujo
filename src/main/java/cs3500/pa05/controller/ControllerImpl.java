@@ -4,8 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa05.model.Day;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
-import cs3500.pa05.model.records.FileJSON;
-import java.io.File;
+import cs3500.pa05.model.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +16,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 
 public class ControllerImpl implements Controller {
-  private FileJSON file;
+  private File file;
   private Button save;
   private Button openFile;
   private Button addEvent;
@@ -29,7 +28,7 @@ public class ControllerImpl implements Controller {
   private Button settings;
   private String path;
 
-  public ControllerImpl(List<Day> days, List<Task> taskQueue, FileJSON file, String path) {
+  public ControllerImpl(List<Day> days, List<Task> taskQueue, File file, String path) {
     this.file = file;
     this.taskQueue = taskQueue;
     this.currentTheme = new Menu("Choose the theme");
@@ -74,7 +73,7 @@ public class ControllerImpl implements Controller {
   void handleSave(String path) {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
-      File outputFile = new File(path);
+      java.io.File outputFile = new java.io.File(path);
       objectMapper.writeValue(outputFile, file);
     } catch (IOException e) {
       handleWarning("Unable to save the file.");
@@ -84,8 +83,8 @@ public class ControllerImpl implements Controller {
   void handleOpenFile(String path) {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
-      File inputFile = new File(path);
-      this.file = objectMapper.readValue(inputFile, FileJSON.class);
+      java.io.File inputFile = new java.io.File(path);
+      this.file = objectMapper.readValue(inputFile, File.class);
 
     } catch (IOException e) {
       handleWarning("Unable to open the file.");
@@ -186,7 +185,7 @@ public class ControllerImpl implements Controller {
             if (durationResult.isPresent()) {
               double duration = Double.parseDouble(durationResult.get());
 
-              Day currentDay = file.days().get(file.days().size() - 1);
+              Day currentDay = file.days.get(file.days.size() - 1);
 
               if (currentDay != null) {
                 Event newEvent = new Event(name, desc, day, startTime, duration);
@@ -224,12 +223,14 @@ public class ControllerImpl implements Controller {
   }
 
   void handleMaxTasksEvents(int maxTasks, int maxEvents) {
-    file.maxTasks = maxTasks;
-    file.maxEvents = maxEvents;
+    file.setMaxEvents(maxEvents);
+    file.setMaxTasks(maxTasks);
+    handleSave(path);
   }
 
   void handleThemeChange(String theme) {
-    file.theme = theme;
+    file.setTheme(theme);
+    handleSave(path);
   }
 
   void handleWarning(String message) {

@@ -5,19 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Day {
-  String name;
-  List<Event> events;
-  List<Task> tasks;
-  int maxEvents;
-  int maxTasks;
+  @JsonProperty("events")
+  private List<Event> events;
 
-  public Day (String name, @JsonProperty("events") List<Event> events,
-              @JsonProperty("tasks") List<Task> tasks,
-              @JsonProperty("max-events") int maxEvents,
-              @JsonProperty("max-tasks") int maxTasks) {
-    this.name = name;
-    this.events = new ArrayList<>();
-    this.tasks = new ArrayList<>();
+  @JsonProperty("tasks")
+  private List<Task> tasks;
+
+  @JsonProperty("max-events")
+  private int maxEvents;
+
+  @JsonProperty("max-tasks")
+  private int maxTasks;
+
+  public Day (
+      @JsonProperty("events") List<Event> events,
+      @JsonProperty("tasks") List<Task> tasks,
+      @JsonProperty("max-events") int maxEvents,
+      @JsonProperty("max-tasks") int maxTasks) {
+    this.events = events;
+    this.tasks = tasks;
     this.maxEvents = maxEvents;
     this.maxTasks = maxTasks;
   }

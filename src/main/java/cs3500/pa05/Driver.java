@@ -1,17 +1,5 @@
 package cs3500.pa05;
 
-import cs3500.pa05.controller.ControllerImpl;
-import cs3500.pa05.model.BujoModelImpl;
-import cs3500.pa05.model.Day;
-import cs3500.pa05.model.Task;
-import cs3500.pa05.model.records.FileJSON;
-import cs3500.pa05.view.BujoSceneImpl;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.application.Application;
-import javafx.stage.Stage;
-
 public class Driver  {
 
   // class has to extend Application, will add this once everything is implemented
