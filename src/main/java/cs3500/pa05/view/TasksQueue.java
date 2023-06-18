@@ -14,6 +14,5 @@ public class TasksQueue extends VBox {
     this.tasks = tasks;
   }
 
-  // handlers go here
 
 }

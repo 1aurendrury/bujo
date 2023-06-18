@@ -19,5 +19,4 @@ public class TaskView extends VBox {
     this.complete = complete;
   }
 
-  // handler functions can go here
 }

@@ -19,5 +19,5 @@ public class EventView extends VBox {
     this.duration = duration;
   }
 
-  // handler calls go here
+
 }

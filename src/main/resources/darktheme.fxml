@@ -6,60 +6,55 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane prefHeight="750.0" prefWidth="1371.0">
+    <AnchorPane prefHeight="924.0" prefWidth="1407.0">
       <children>
-         <ImageView fitHeight="752.0" fitWidth="1407.0">
+         <ImageView fitHeight="925.0" fitWidth="1439.0">
             <image>
                <Image url="dbg.jpg" />
             </image>
          </ImageView>
          <VBox layoutX="7.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" blendMode="LIGHTEN" prefHeight="45.0" prefWidth="172.0" text="Sunday" textFill="WHITE">
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Sunday" textFill="WHITE">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
                </Label>
-               <VBox prefHeight="300.0" prefWidth="173.0">
+               <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <AnchorPane prefHeight="301.0" prefWidth="173.0">
-                        <children>
-                           <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                           <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
-                              <font>
-                                 <Font name="Rockwell" size="18.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </AnchorPane>
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
+                        <font>
+                           <Font name="Rockwell" size="18.0" />
+                        </font>
+                     </Label>
+                     <ChoiceBox fx:id="numTasksSun" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addTaskSun" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
-               </VBox>
-               <VBox prefHeight="300.0" prefWidth="173.0">
+               </AnchorPane>
+               <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <AnchorPane prefHeight="301.0" prefWidth="173.0">
-                        <children>
-                           <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                           <Label layoutX="2.0" prefHeight="32.0" prefWidth="60.0" text="Events" textFill="WHITE">
-                              <font>
-                                 <Font name="Rockwell" size="18.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </AnchorPane>
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="WHITE">
+                        <font>
+                           <Font name="Rockwell" size="18.0" />
+                        </font>
+                     </Label>
+                     <ChoiceBox fx:id="numEventsSun" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addEventSun" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
-               </VBox>
+               </AnchorPane>
             </children>
             <effect>
-               <Glow level="0.25" />
+               <Glow level="0.0" />
             </effect>
          </VBox>
          <VBox layoutX="180.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
@@ -71,22 +66,24 @@
                </Label>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numTasksMon" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addTaskMon" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="2.0" prefHeight="32.0" prefWidth="60.0" text="Events" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numEventsMon" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addEventMon" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -100,22 +97,24 @@
                </Label>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numTasksTues" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addTaskTues" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="1.0" prefHeight="32.0" prefWidth="61.0" text="Events" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numEventsTues" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addEventTues" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -129,22 +128,24 @@
                </Label>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numTasksWed" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addTaskWed" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="2.0" prefHeight="32.0" prefWidth="60.0" text="Events" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numEventsWed" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addEventWed" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -158,22 +159,24 @@
                </Label>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numTasksThurs" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addTaskThurs" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label prefHeight="32.0" prefWidth="62.0" text="Events" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numEventsThurs" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addEventThurs" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -187,22 +190,24 @@
                </Label>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numTasksFri" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addTaskFri" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="-1.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numEventsFri" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addEventFri" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -216,29 +221,31 @@
                </Label>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numTasksSat" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addTaskSat" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Slider layoutX="73.0" layoutY="5.0" maxHeight="19.0" maxWidth="86.0" minHeight="10.0" minWidth="50.0" prefHeight="19.0" prefWidth="86.0" />
-                     <Label layoutX="1.0" prefHeight="32.0" prefWidth="61.0" text="Events" textFill="WHITE">
+                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events" textFill="WHITE">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ChoiceBox fx:id="numEventsSat" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
+                     <Button fx:id="addEventSat" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
          </VBox>
-         <Button layoutX="1231.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Save" />
-         <Button layoutX="1311.0" layoutY="13.0" mnemonicParsing="false" text="Open File" />
-         <ChoiceBox accessibleText="Theme" layoutX="1069.0" layoutY="12.0" prefWidth="150.0">
+         <Button fx:id="saveFile" layoutX="1231.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Save" />
+         <Button fx:id="openFile" layoutX="1311.0" layoutY="13.0" mnemonicParsing="false" text="Open File" />
+         <ChoiceBox fx:id="chooseTheme" accessibleText="Theme" layoutX="1069.0" layoutY="12.0" prefWidth="150.0">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
@@ -254,12 +261,40 @@
                   <children>
                      <AnchorPane prefHeight="671.0" prefWidth="173.0">
                         <children>
-                           <ProgressBar layoutX="-6.0" layoutY="5.0" prefHeight="18.0" prefWidth="167.0" progress="0.0" />
+                           <ProgressBar fx:id="taskProgressBar" layoutX="-6.0" layoutY="5.0" prefHeight="18.0" prefWidth="167.0" progress="0.0" />
                         </children>
                      </AnchorPane>
                   </children>
                </VBox>
             </children>
          </VBox>
+         <HBox layoutX="14.0" layoutY="766.0" prefHeight="137.0" prefWidth="688.0">
+            <children>
+               <Label prefHeight="41.0" prefWidth="158.0" text="Quotes and Notes: " textFill="WHITE">
+                  <font>
+                     <Font name="Rockwell" size="18.0" />
+                  </font>
+               </Label>
+               <AnchorPane prefHeight="137.0" prefWidth="527.0">
+                  <children>
+                     <TextField fx:id="quoteBox" layoutY="1.0" prefHeight="129.0" prefWidth="528.0" />
+                  </children>
+               </AnchorPane>
+            </children>
+         </HBox>
+         <HBox layoutX="734.0" layoutY="767.0" prefHeight="129.0" prefWidth="688.0">
+            <children>
+               <Label prefHeight="41.0" prefWidth="158.0" text="Weekly Statistics:" textFill="WHITE">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Label>
+               <AnchorPane prefHeight="137.0" prefWidth="527.0">
+                  <children>
+                     <Label fx:id="weekStatsBox" layoutY="-3.0" prefHeight="128.0" prefWidth="525.0" text="Stats go here: " textFill="WHITE" />
+                  </children>
+               </AnchorPane>
+            </children>
+         </HBox>
       </children></AnchorPane>
 </Scene>
