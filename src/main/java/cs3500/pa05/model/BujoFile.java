@@ -22,14 +22,12 @@ public class BujoFile {
   public BujoFile(
       @JsonProperty("theme") String theme,
       @JsonProperty("name") String name,
-      @JsonProperty("days") List<Day> days,
-      @JsonProperty("max-tasks") int maxTasks,
-      @JsonProperty("max-events") int maxEvents) {
+      @JsonProperty("days") List<Day> days) {
     this.theme = theme;
     this.name = name;
     this.days = days;
-    this.maxTasks = maxTasks;
-    this.maxEvents = maxEvents;
+    this.maxTasks = 0;
+    this.maxEvents = 0;
   }
 
   public void setMaxTasks(int maxTasks) {

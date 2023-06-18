@@ -25,8 +25,8 @@ public class ControllerImpl implements Controller {
   private List<Task> taskQueue;
   private ComboBox<String> themePicker;
   private String theme;
-  private HBox versionControls;
-  private HBox addControls;
+  private HBox versionControls = new HBox();
+  private HBox addControls = new HBox();
   private Button settings;
   private String path;
 
