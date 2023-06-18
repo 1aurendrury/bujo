@@ -12,17 +12,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane prefHeight="856.0" prefWidth="1404.0">
+<Scene fx:id="lightMode" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane fx:id="entireScreen" prefHeight="856.0" prefWidth="1404.0">
       <children>
-         <VBox layoutX="7.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
+         <VBox fx:id="sundayBox" layoutX="7.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Sunday">
+               <Label fx:id="sundayLabel" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Sunday">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
                </Label>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="sundayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
@@ -33,7 +33,7 @@
                      <Button fx:id="addTaskSun" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="sundayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
@@ -46,14 +46,14 @@
                </AnchorPane>
             </children>
          </VBox>
-         <VBox layoutX="180.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
+         <VBox fx:id="mondayBox" layoutX="180.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Monday">
+               <Label fx:id="mondayLabel" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Monday">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
                </Label>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="mondayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
@@ -64,7 +64,7 @@
                      <Button fx:id="addTaskMon" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="mondayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
@@ -77,14 +77,14 @@
                </AnchorPane>
             </children>
          </VBox>
-         <VBox layoutX="353.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
+         <VBox fx:id="tuesdayBox" layoutX="353.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Tuesday">
+               <Label fx:id="tuesdayLabel" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Tuesday">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
                </Label>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="tuesdayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
@@ -95,7 +95,7 @@
                      <Button fx:id="addTaskTues" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="tuesdayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
@@ -108,14 +108,14 @@
                </AnchorPane>
             </children>
          </VBox>
-         <VBox layoutX="526.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
+         <VBox fx:id="wednesdayBox" layoutX="526.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Wednesday">
+               <Label fx:id="wednesdayLabel" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Wednesday">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
                </Label>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="wednesdayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
@@ -126,7 +126,7 @@
                      <Button fx:id="addTaskWed" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="wednesdayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
@@ -139,14 +139,14 @@
                </AnchorPane>
             </children>
          </VBox>
-         <VBox layoutX="699.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
+         <VBox fx:id="thursdayBox" layoutX="699.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Thursday">
+               <Label fx:id="thursdayLabel" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Thursday">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
                </Label>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="thursdayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
@@ -157,7 +157,7 @@
                      <Button fx:id="addTaskThurs" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="thursdayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
@@ -170,14 +170,14 @@
                </AnchorPane>
             </children>
          </VBox>
-         <VBox layoutX="872.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
+         <VBox fx:id="fridayBox" layoutX="872.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Friday">
+               <Label fx:id="fridayLabel" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Friday">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
                </Label>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="fridayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
@@ -188,7 +188,7 @@
                      <Button fx:id="addTaskFri" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="fridayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
@@ -201,14 +201,14 @@
                </AnchorPane>
             </children>
          </VBox>
-         <VBox layoutX="1045.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
+         <VBox fx:id="saturdayBox" layoutX="1045.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Saturday">
+               <Label fx:id="saturdayLabel" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Saturday">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
                </Label>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="saturdayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
@@ -219,7 +219,7 @@
                      <Button fx:id="addTaskSat" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
-               <AnchorPane prefHeight="301.0" prefWidth="173.0">
+               <AnchorPane fx:id="saturdayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
                      <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
@@ -239,7 +239,7 @@
                <Insets />
             </opaqueInsets>
          </ChoiceBox>
-         <VBox layoutX="1231.0" layoutY="36.0" prefHeight="715.0" prefWidth="173.0">
+         <VBox fx:id="tasksQueue" layoutX="1231.0" layoutY="36.0" prefHeight="715.0" prefWidth="173.0">
             <children>
                <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Tasks Queue">
                   <font>
@@ -257,7 +257,7 @@
                </VBox>
             </children>
          </VBox>
-         <HBox layoutX="4.0" layoutY="732.0" prefHeight="137.0" prefWidth="688.0">
+         <HBox fx:id="quotesBox" layoutX="4.0" layoutY="732.0" prefHeight="137.0" prefWidth="688.0">
             <children>
                <Label prefHeight="41.0" prefWidth="158.0" text="Quotes and Notes: ">
                   <font>
@@ -271,7 +271,7 @@
                </AnchorPane>
             </children>
          </HBox>
-         <HBox layoutX="717.0" layoutY="736.0" prefHeight="129.0" prefWidth="688.0">
+         <HBox fx:id="statsBox" layoutX="717.0" layoutY="736.0" prefHeight="129.0" prefWidth="688.0">
             <children>
                <Label prefHeight="41.0" prefWidth="158.0" text="Weekly Statistics:">
                   <font>
