@@ -20,9 +20,13 @@ public class ControllerImpl implements Controller {
   private FileJSON file;
   private Button save;
   private Button openFile;
+  private Button addEvent;
+  private Button addTask;
   private List<Task> taskQueue;
   private Menu currentTheme;
-  private HBox controls;
+  private HBox versionControls;
+  private HBox addControls;
+  private Button settings;
   private String path;
 
   public ControllerImpl(List<Day> days, List<Task> taskQueue, FileJSON file, String path) {
@@ -48,42 +52,51 @@ public class ControllerImpl implements Controller {
     openFile.setPrefHeight(25);
     openFile.setOnAction(e -> handleOpenFile(path));
 
-    controls.getChildren().addAll(save, openFile);
+    addEvent = new Button("Add Event +");
+    addEvent.setPrefWidth(50);
+    addEvent.setPrefHeight(25);
+    addEvent.setOnAction(e -> handleNewEvent());
+
+    addTask = new Button("Add Task +");
+    addTask.setPrefWidth(50);
+    addTask.setPrefHeight(25);
+    addTask.setOnAction(e -> handleNewTask());
+
+    settings = new Button("Settings");
+    settings.setPrefWidth(50);
+    settings.setPrefHeight(25);
+    settings.setOnAction(e -> handleSettings());
+
+    addControls.getChildren().addAll(addEvent, addTask);
+    versionControls.getChildren().addAll(save, openFile);
   }
 
   void handleSave(String path) {
     ObjectMapper objectMapper = new ObjectMapper();
-
     try {
-      Object filePath;
       File outputFile = new File(path);
       objectMapper.writeValue(outputFile, file);
-      System.out.println("File saved successfully.");
     } catch (IOException e) {
-      System.err.println("Unable to save the file.");
+      handleWarning("Unable to save the file.");
     }
   }
 
   void handleOpenFile(String path) {
     ObjectMapper objectMapper = new ObjectMapper();
-
     try {
       File inputFile = new File(path);
-      FileJSON fileJSON = objectMapper.readValue(inputFile, FileJSON.class);
-      System.out.println("File opened successfully.");
-
-      this.file = fileJSON;
+      this.file = objectMapper.readValue(inputFile, FileJSON.class);
 
     } catch (IOException e) {
-      System.err.println("Unable to open the file.");
+      handleWarning("Unable to open the file.");
     }
   }
 
   void handleNewTask() {
     TextInputDialog nameDialog = new TextInputDialog();
     nameDialog.setTitle("New Task");
-    nameDialog.setHeaderText("Enter task name:");
-    nameDialog.setContentText("Name:");
+    nameDialog.setHeaderText("Enter task name: ");
+    nameDialog.setContentText("Name: ");
     Optional<String> nameResult = nameDialog.showAndWait();
 
     if (nameResult.isPresent()) {
@@ -91,8 +104,8 @@ public class ControllerImpl implements Controller {
 
       TextInputDialog descDialog = new TextInputDialog();
       descDialog.setTitle("New Task");
-      descDialog.setHeaderText("Enter task description:");
-      descDialog.setContentText("Description:");
+      descDialog.setHeaderText("Enter task description: ");
+      descDialog.setContentText("Description: ");
       Optional<String> descResult = descDialog.showAndWait();
 
       if (descResult.isPresent()) {
@@ -100,8 +113,8 @@ public class ControllerImpl implements Controller {
 
         TextInputDialog dayDialog = new TextInputDialog();
         dayDialog.setTitle("New Task");
-        dayDialog.setHeaderText("Enter task day:");
-        dayDialog.setContentText("Day:");
+        dayDialog.setHeaderText("Enter task day: ");
+        dayDialog.setContentText("Day: ");
         Optional<String> dayResult = dayDialog.showAndWait();
 
         if (dayResult.isPresent()) {
@@ -110,7 +123,7 @@ public class ControllerImpl implements Controller {
           Alert completeAlert = new Alert(Alert.AlertType.CONFIRMATION);
           completeAlert.setTitle("New Task");
           completeAlert.setHeaderText("Is the task complete?");
-          completeAlert.setContentText("Choose an option:");
+          completeAlert.setContentText("Choose an option: ");
           ButtonType completeButton = new ButtonType("Complete");
           ButtonType incompleteButton = new ButtonType("Incomplete");
           completeAlert.getButtonTypes().setAll(completeButton, incompleteButton);
@@ -173,7 +186,7 @@ public class ControllerImpl implements Controller {
             if (durationResult.isPresent()) {
               double duration = Double.parseDouble(durationResult.get());
 
-              Day currentDay = file.days().get(file.days().size()-1);
+              Day currentDay = file.days().get(file.days().size() - 1);
 
               if (currentDay != null) {
                 Event newEvent = new Event(name, desc, day, startTime, duration);
@@ -187,16 +200,43 @@ public class ControllerImpl implements Controller {
     }
   }
 
+  void handleSettings() {
+    TextInputDialog maxEventsDialog = new TextInputDialog();
+    maxEventsDialog.setTitle("Settings");
+    maxEventsDialog.setHeaderText("Set maximum number of events per day: ");
+    maxEventsDialog.setContentText("Maximum Events: ");
+    Optional<String> maxEventsResult = maxEventsDialog.showAndWait();
 
-  void handleMaxTasksEvents() {
+    if (maxEventsResult.isPresent()) {
+      int maxEvents = Integer.parseInt(maxEventsResult.get());
 
+      TextInputDialog maxTasksDialog = new TextInputDialog();
+      maxTasksDialog.setTitle("Settings");
+      maxTasksDialog.setHeaderText("Set maximum number of tasks per day:" );
+      maxTasksDialog.setContentText("Maximum Tasks: ");
+      Optional<String> maxTasksResult = maxTasksDialog.showAndWait();
+
+      if (maxTasksResult.isPresent()) {
+        int maxTasks = Integer.parseInt(maxTasksResult.get());
+        handleMaxTasksEvents(maxTasks, maxEvents);
+      }
+    }
+  }
+
+  void handleMaxTasksEvents(int maxTasks, int maxEvents) {
+    file.maxTasks = maxTasks;
+    file.maxEvents = maxEvents;
   }
 
   void handleThemeChange(String theme) {
-
+    file.theme = theme;
   }
 
-  void handleWarning() {
-
+  void handleWarning(String message) {
+    Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+    warningAlert.setTitle("Warning");
+    warningAlert.setContentText(message);
+    warningAlert.showAndWait();
   }
+
 }

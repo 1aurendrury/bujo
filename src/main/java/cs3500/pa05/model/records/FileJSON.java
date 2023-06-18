@@ -8,5 +8,7 @@ import java.util.List;
 public record FileJSON(
     @JsonProperty("theme") String theme,
     @JsonProperty("name") String name,
-    @JsonProperty("days") List<Day> days) {
+    @JsonProperty("days") List<Day> days,
+    @JsonProperty("max-tasks") int maxTasks,
+    @JsonProperty("max-events") int maxEvents) {
 }
