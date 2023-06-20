@@ -23,7 +23,7 @@ public class Driver extends Application {
     BujoFile file = new BujoFile("lightmode.fxml", "light mode", days);
 
     BujoModelImpl model = new BujoModelImpl();
-    ControllerImpl controller = new ControllerImpl(
+    ControllerImpl controller = new ControllerImpl(stage,
         days, taskQueue, file, "/src/main/resources/lightmode.fxml");
 
     BujoSceneImpl view = new BujoSceneImpl(controller);

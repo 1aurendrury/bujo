@@ -19,6 +19,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class ControllerImpl implements Controller {
+  private Stage stage;
   private BujoFile bujoFile;
   private Button save;
   private Button openFile;
@@ -32,7 +33,8 @@ public class ControllerImpl implements Controller {
   private Button settings;
   private String path;
 
-  public ControllerImpl(List<Day> days, List<Task> taskQueue, BujoFile bujoFile, String path) {
+  public ControllerImpl(Stage stage, List<Day> days, List<Task> taskQueue, BujoFile bujoFile, String path) {
+    this.stage = stage;
     this.bujoFile = bujoFile;
     this.taskQueue = taskQueue;
     this.path = path;
@@ -93,11 +95,10 @@ public class ControllerImpl implements Controller {
     ObjectMapper objectMapper = new ObjectMapper();
 
     FileChooser fileChooser = new FileChooser();
-    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files",
-        "*.json"));
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("BUJO Files",
+        "*.bujo"));
 
-    Stage primaryStage = new Stage();
-    File selectedFile = fileChooser.showOpenDialog(primaryStage);
+    File selectedFile = fileChooser.showOpenDialog(this.stage);
 
     if (selectedFile != null) {
       try {
