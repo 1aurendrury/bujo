@@ -2,11 +2,14 @@ package cs3500.pa05.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa05.model.BujoFile;
+import cs3500.pa05.model.BujoModelImpl;
 import cs3500.pa05.model.Day;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
+import cs3500.pa05.view.BujoSceneImpl;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javafx.fxml.FXML;
@@ -16,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -37,6 +41,7 @@ public class ControllerImpl implements Controller {
   @FXML
   private Button settings;
   private String path;
+  private BujoModelImpl bujoModel;
 
   // initialize all of the buttons
   @FXML
@@ -68,11 +73,15 @@ public class ControllerImpl implements Controller {
   @FXML
   private AnchorPane sundayTasks;
   @FXML
+  private ListView sundayTaskView;
+  @FXML
   private AnchorPane sundayEvents;
   @FXML
   private Label mondayLabel;
   @FXML
   private AnchorPane mondayTasks;
+  @FXML
+  private ListView mondayTaskView;
   @FXML
   private AnchorPane mondayEvents;
   @FXML
@@ -80,11 +89,15 @@ public class ControllerImpl implements Controller {
   @FXML
   private AnchorPane tuesdayTasks;
   @FXML
+  private ListView tuesdayTaskView;
+  @FXML
   private AnchorPane tuesdayEvents;
   @FXML
   private Label wednesdayLabel;
   @FXML
   private AnchorPane wednesdayTasks;
+  @FXML
+  private ListView wednesdayTaskView;
   @FXML
   private AnchorPane wednesdayEvents;
   @FXML
@@ -92,17 +105,23 @@ public class ControllerImpl implements Controller {
   @FXML
   private AnchorPane thursdayTasks;
   @FXML
+  private ListView thursdayTaskView;
+  @FXML
   private AnchorPane thursdayEvents;
   @FXML
   private Label fridayLabel;
   @FXML
   private AnchorPane fridayTasks;
   @FXML
+  private ListView fridayTaskView;
+  @FXML
   private AnchorPane fridayEvents;
   @FXML
   private Label saturdayLabel;
   @FXML
   private AnchorPane saturdayTasks;
+  @FXML
+  private ListView saturdayTaskView;
   @FXML
   private AnchorPane saturdayEvents;
   @FXML
@@ -115,6 +134,8 @@ public class ControllerImpl implements Controller {
   private Label tasksLabel;
   @FXML
   private AnchorPane tasksQueueBox;
+  @FXML
+  private ListView tasksQueueView;
   @FXML
   private ProgressBar taskProgressBar;
   @FXML
@@ -133,6 +154,8 @@ public class ControllerImpl implements Controller {
   private Button addEvent;
   @FXML
   private Button addTask;
+  @FXML
+  private List<String> tasks;
 
 
 
@@ -147,11 +170,14 @@ public class ControllerImpl implements Controller {
    */
 
 
-  public ControllerImpl(Stage stage, List<Day> days, List<Task> taskQueue, BujoFile bujoFile, String path) {
+  public ControllerImpl(Stage stage, List<Task> taskQueue, BujoFile bujoFile, String path,
+                        BujoModelImpl bujoModel) {
+    this.tasks = new ArrayList<>();
     this.stage = stage;
     this.bujoFile = bujoFile;
     this.taskQueue = taskQueue;
     this.path = path;
+    this.bujoModel = bujoModel;
   }
 
   @Override
@@ -160,26 +186,13 @@ public class ControllerImpl implements Controller {
   }
 
   private void initButtons() {
-    saveFile = new Button("Save");
-    saveFile.setPrefWidth(50);
-    saveFile.setPrefHeight(25);
-    saveFile.setOnAction(e -> handleSave(path));
+    saveFile.setOnAction(e -> handleSave());
 
-    openFile = new Button("Open");
-    openFile.setPrefWidth(50);
-    openFile.setPrefHeight(25);
     openFile.setOnAction(e -> handleOpenFile());
 
-    addEvent = new Button("Add Event +");
-    addEvent.setPrefWidth(50);
-    addEvent.setPrefHeight(25);
     addEvent.setOnAction(e -> handleNewEvent());
 
-    addTask = new Button("Add Task +");
-    addTask.setPrefWidth(50);
-    addTask.setPrefHeight(25);
     addTask.setOnAction(e -> handleNewTask());
-
 
     settings.setOnAction(e -> handleSettings());
 
@@ -189,14 +202,20 @@ public class ControllerImpl implements Controller {
 
   }
 
-  void handleSave(String path) {
+  void handleSave() {
     ObjectMapper objectMapper = new ObjectMapper();
-    try {
-      File file = new File(path);
-      objectMapper.writeValue(file, this.bujoFile);
-      System.out.println("Saved successfully.");
-    } catch (IOException e) {
-      System.out.println("Failed to save the file: " + e.getMessage());
+
+    FileChooser fileChooser = new FileChooser();
+    File selectedFile = fileChooser.showOpenDialog(this.stage);
+
+    if (selectedFile != null) {
+      try {
+        File file = new File(selectedFile.getPath());
+        objectMapper.writeValue(file, this.bujoFile);
+        System.out.println("Saved successfully.");
+      } catch (IOException e) {
+        System.out.println("Failed to save the file: " + e.getMessage());
+      }
     }
   }
 
@@ -263,7 +282,27 @@ public class ControllerImpl implements Controller {
 
           Task newTask = new Task(name, desc, day, isComplete);
 
-          taskQueue.add(newTask);
+          tasks.add(name);
+          bujoModel.addTask(newTask, day);
+          displayTasks();
+        }
+      }
+    }
+  }
+
+  void displayTasks() {
+    tasksQueueView.getItems().addAll(tasks);
+    for (Task t: bujoModel.getTasks()) {
+      switch (t.getDay().toLowerCase()) {
+        case "sunday" -> sundayTaskView.getItems().add(t.toString());
+        case "monday" -> mondayTaskView.getItems().add(t.toString());
+        case "tuesday" -> tuesdayTaskView.getItems().add(t.toString());
+        case "wednesday" -> wednesdayTaskView.getItems().add(t.toString());
+        case "thursday" -> thursdayTaskView.getItems().add(t.toString());
+        case "friday" -> fridayTaskView.getItems().add(t.toString());
+        case "saturday" -> saturdayTaskView.getItems().add(t.toString());
+        default ->  {
+          throw new IllegalArgumentException("Day entered is invalid");
         }
       }
     }
@@ -355,12 +394,12 @@ public class ControllerImpl implements Controller {
   void handleMaxTasksEvents(int maxTasks, int maxEvents) {
     bujoFile.setMaxEvents(maxEvents);
     bujoFile.setMaxTasks(maxTasks);
-    handleSave(path);
+    handleSave();
   }
 
   void handleThemeChange(String theme) {
     this.theme = theme;
-    handleSave(path);
+    handleSave();
   }
 
   void handleWarning(String message) {
@@ -369,5 +408,4 @@ public class ControllerImpl implements Controller {
     warningAlert.setContentText(message);
     warningAlert.showAndWait();
   }
-
 }

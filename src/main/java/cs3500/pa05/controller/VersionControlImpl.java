@@ -12,7 +12,7 @@ public class VersionControlImpl implements VersionControl {
 
   @Override
   public void save(String path) {
-    controller.handleSave(path);
+    controller.handleSave();
   }
 
   @Override

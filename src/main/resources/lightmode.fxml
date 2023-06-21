@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -29,6 +29,7 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ListView fx:id="sundayTaskView" layoutX="2.0" layoutY="26.0" prefHeight="266.0" prefWidth="146.0" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="sundayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -56,6 +57,7 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ListView fx:id="mondayTaskView" layoutY="27.0" prefHeight="266.0" prefWidth="146.0" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="mondayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -83,6 +85,7 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ListView fx:id="tuesdayTaskView" layoutX="-1.0" layoutY="26.0" prefHeight="266.0" prefWidth="146.0" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="tuesdayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -110,6 +113,7 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ListView fx:id="wednesdayTaskView" layoutX="2.0" layoutY="26.0" prefHeight="266.0" prefWidth="146.0" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="wednesdayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -137,6 +141,7 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ListView fx:id="thursdayTaskView" layoutX="-5.0" layoutY="26.0" prefHeight="266.0" prefWidth="146.0" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="thursdayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -164,6 +169,7 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ListView fx:id="fridayTaskView" layoutY="28.0" prefHeight="266.0" prefWidth="146.0" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="fridayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -191,6 +197,7 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
+                     <ListView fx:id="saturdayTaskView" layoutX="1.0" layoutY="30.0" prefHeight="266.0" prefWidth="146.0" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="saturdayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -220,7 +227,7 @@
                </Label>
                <AnchorPane fx:id="tasksQueueBox" prefHeight="631.0" prefWidth="173.0">
                   <children>
-                     <ProgressBar fx:id="taskProgressBar" layoutX="-6.0" layoutY="5.0" prefHeight="18.0" prefWidth="167.0" progress="0.0" />
+                     <ListView fx:id="tasksQueueView" layoutX="3.0" layoutY="6.0" prefHeight="611.0" prefWidth="146.0" />
                   </children>
                </AnchorPane>
             </children>

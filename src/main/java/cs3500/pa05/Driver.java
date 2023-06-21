@@ -24,7 +24,7 @@ public class Driver extends Application {
 
     BujoModelImpl model = new BujoModelImpl();
     ControllerImpl controller = new ControllerImpl(stage,
-        days, taskQueue, file, "/src/main/resources/lightmode.fxml");
+        taskQueue, file, "/src/main/resources/lightmode.fxml", new BujoModelImpl());
 
     BujoSceneImpl view = new BujoSceneImpl(controller);
 
@@ -40,10 +40,8 @@ public class Driver extends Application {
     }
  }
 
- public static void main(String[] args) {
+  public static void main(String[] args) {
     launch();
- }
-
-
+  }
 }
 

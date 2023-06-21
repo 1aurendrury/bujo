@@ -14,11 +14,11 @@ public interface BujoModel {
    * Adds a task to this BujoModel's list of tasks
    * @param task the task to be added to this BujoModel, as a Task
    */
-  void addTask(Task task);
+  void addTask(Task task, String day);
 
   /**
    * Adds an event to this BujoModel's list of events
    * @param event the event to be added to this BujoModel, as an event
    */
-  void addEvent(Event event);
+  void addEvent(Event event, String day);
 }

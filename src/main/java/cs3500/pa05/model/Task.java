@@ -24,4 +24,18 @@ public class Task {
     this.day = day;
     this.isComplete = isComplete;
   }
+
+  public String getDay() {
+    return this.day;
+  }
+
+  public String toString() {
+    String complete;
+    if (isComplete) {
+      complete = "Complete";
+    } else {
+      complete = "Not complete";
+    }
+    return name + "\n" + desc + "\n" + complete;
+  }
 }

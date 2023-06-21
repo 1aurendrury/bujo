@@ -14,6 +14,7 @@ public class BujoModelImpl implements BujoModel {
 
   public BujoModelImpl() {
     this.days = new ArrayList<>();
+    createDays();
     this.allEvents = new ArrayList<>();
     this.allTasks = new ArrayList<>();
     this.theme = null;
@@ -33,8 +34,20 @@ public class BujoModelImpl implements BujoModel {
    * @param task the task to be added to this BujoModel, as a Task
    */
   @Override
-  public void addTask(Task task) {
+  public void addTask(Task task, String day) {
     this.allTasks.add(task);
+    switch (day.toLowerCase()) {
+      case "sunday" -> days.get(0).tasks.add(task);
+      case "monday" -> days.get(1).tasks.add(task);
+      case "tuesday" -> days.get(2).tasks.add(task);
+      case "wednesday" -> days.get(3).tasks.add(task);
+      case "thursday" -> days.get(4).tasks.add(task);
+      case "friday" -> days.get(5).tasks.add(task);
+      case "saturday" -> days.get(6).tasks.add(task);
+      default ->  {
+        throw new IllegalArgumentException("Day entered is invalid");
+      }
+    }
   }
 
   /**
@@ -42,8 +55,20 @@ public class BujoModelImpl implements BujoModel {
    * @param event the event to be added to this BujoModel, as an event
    */
   @Override
-  public void addEvent(Event event) {
+  public void addEvent(Event event, String day) {
     this.allEvents.add(event);
+    switch (day.toLowerCase()) {
+      case "sunday" -> days.get(0).events.add(event);
+      case "monday" -> days.get(1).events.add(event);
+      case "tuesday" -> days.get(2).events.add(event);
+      case "wednesday" -> days.get(3).events.add(event);
+      case "thursday" -> days.get(4).events.add(event);
+      case "friday" -> days.get(5).events.add(event);
+      case "saturday" -> days.get(6).events.add(event);
+      default ->  {
+        throw new IllegalArgumentException("Day entered is invalid");
+      }
+    }
   }
 
   /**
