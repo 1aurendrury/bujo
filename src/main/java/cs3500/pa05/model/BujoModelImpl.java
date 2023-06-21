@@ -102,4 +102,12 @@ public class BujoModelImpl implements BujoModel {
   public List<Task> getTasks() {
     return this.allTasks;
   }
+
+  /**
+   * Provides the events from a BujoModelImpl
+   * @return the list of events attatched to this BujoModelImpl
+   */
+  public List<Event> getEvents() {
+    return this.allEvents;
+  }
 }

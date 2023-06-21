@@ -29,6 +29,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -77,6 +78,8 @@ public class ControllerImpl implements Controller {
   @FXML
   private AnchorPane sundayEvents;
   @FXML
+  private ListView sundayEventView;
+  @FXML
   private Label mondayLabel;
   @FXML
   private AnchorPane mondayTasks;
@@ -84,6 +87,8 @@ public class ControllerImpl implements Controller {
   private ListView mondayTaskView;
   @FXML
   private AnchorPane mondayEvents;
+  @FXML
+  private ListView mondayEventView;
   @FXML
   private Label tuesdayLabel;
   @FXML
@@ -93,6 +98,8 @@ public class ControllerImpl implements Controller {
   @FXML
   private AnchorPane tuesdayEvents;
   @FXML
+  private ListView tuesdayEventView;
+  @FXML
   private Label wednesdayLabel;
   @FXML
   private AnchorPane wednesdayTasks;
@@ -100,6 +107,8 @@ public class ControllerImpl implements Controller {
   private ListView wednesdayTaskView;
   @FXML
   private AnchorPane wednesdayEvents;
+  @FXML
+  private ListView wednesdayEventView;
   @FXML
   private Label thursdayLabel;
   @FXML
@@ -109,6 +118,8 @@ public class ControllerImpl implements Controller {
   @FXML
   private AnchorPane thursdayEvents;
   @FXML
+  private ListView thursdayEventView;
+  @FXML
   private Label fridayLabel;
   @FXML
   private AnchorPane fridayTasks;
@@ -117,6 +128,8 @@ public class ControllerImpl implements Controller {
   @FXML
   private AnchorPane fridayEvents;
   @FXML
+  private ListView fridayEventView;
+  @FXML
   private Label saturdayLabel;
   @FXML
   private AnchorPane saturdayTasks;
@@ -124,6 +137,8 @@ public class ControllerImpl implements Controller {
   private ListView saturdayTaskView;
   @FXML
   private AnchorPane saturdayEvents;
+  @FXML
+  private ListView saturdayEventView;
   @FXML
   private Button saveFile;
   @FXML
@@ -156,8 +171,9 @@ public class ControllerImpl implements Controller {
   private Button addTask;
   @FXML
   private List<String> tasks;
-
-
+  @FXML
+  private List<String> events;
+  private String filePath;
 
 
   // things we need (as of now)
@@ -173,6 +189,7 @@ public class ControllerImpl implements Controller {
   public ControllerImpl(Stage stage, List<Task> taskQueue, BujoFile bujoFile, String path,
                         BujoModelImpl bujoModel) {
     this.tasks = new ArrayList<>();
+    this.events = new ArrayList<>();
     this.stage = stage;
     this.bujoFile = bujoFile;
     this.taskQueue = taskQueue;
@@ -205,12 +222,33 @@ public class ControllerImpl implements Controller {
   void handleSave() {
     ObjectMapper objectMapper = new ObjectMapper();
 
-    FileChooser fileChooser = new FileChooser();
-    File selectedFile = fileChooser.showOpenDialog(this.stage);
+    if (filePath == null) {
+      DirectoryChooser directoryChooser = new DirectoryChooser();
+      File selectedDirectory = directoryChooser.showDialog(this.stage);
 
-    if (selectedFile != null) {
+      if (selectedDirectory != null) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Save File");
+        dialog.setHeaderText("Enter the name for your journal");
+        dialog.setContentText("File Name:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+          String fileName = result.get();
+          String filePath = selectedDirectory.getPath() + "/" + fileName + ".bujo";
+          File file = new File(filePath);
+
+          try {
+            objectMapper.writeValue(file, this.bujoFile);
+            System.out.println("Saved successfully.");
+          } catch (IOException e) {
+            System.out.println("Failed to save the file: " + e.getMessage());
+          }
+        }
+      }
+    } else {
       try {
-        File file = new File(selectedFile.getPath());
+        File file = new File(filePath);
         objectMapper.writeValue(file, this.bujoFile);
         System.out.println("Saved successfully.");
       } catch (IOException e) {
@@ -291,19 +329,34 @@ public class ControllerImpl implements Controller {
   }
 
   void displayTasks() {
-    tasksQueueView.getItems().addAll(tasks);
-    for (Task t: bujoModel.getTasks()) {
-      switch (t.getDay().toLowerCase()) {
-        case "sunday" -> sundayTaskView.getItems().add(t.toString());
-        case "monday" -> mondayTaskView.getItems().add(t.toString());
-        case "tuesday" -> tuesdayTaskView.getItems().add(t.toString());
-        case "wednesday" -> wednesdayTaskView.getItems().add(t.toString());
-        case "thursday" -> thursdayTaskView.getItems().add(t.toString());
-        case "friday" -> fridayTaskView.getItems().add(t.toString());
-        case "saturday" -> saturdayTaskView.getItems().add(t.toString());
-        default ->  {
-          throw new IllegalArgumentException("Day entered is invalid");
-        }
+    tasksQueueView.getItems().add(tasks.get(tasks.size() - 1));
+    Task t = bujoModel.getTasks().get(bujoModel.getTasks().size() - 1);
+    switch (t.getDay().toLowerCase()) {
+      case "sunday" -> sundayTaskView.getItems().add(t.toString());
+      case "monday" -> mondayTaskView.getItems().add(t.toString());
+      case "tuesday" -> tuesdayTaskView.getItems().add(t.toString());
+      case "wednesday" -> wednesdayTaskView.getItems().add(t.toString());
+      case "thursday" -> thursdayTaskView.getItems().add(t.toString());
+      case "friday" -> fridayTaskView.getItems().add(t.toString());
+      case "saturday" -> saturdayTaskView.getItems().add(t.toString());
+      default -> {
+        throw new IllegalArgumentException("Day entered is invalid");
+      }
+    }
+  }
+
+  void displayEvents() {
+    Event e = bujoModel.getEvents().get(bujoModel.getEvents().size() - 1);
+    switch (e.getDay().toLowerCase()) {
+      case "sunday" -> sundayEventView.getItems().add(e.toString());
+      case "monday" -> mondayEventView.getItems().add(e.toString());
+      case "tuesday" -> tuesdayEventView.getItems().add(e.toString());
+      case "wednesday" -> wednesdayEventView.getItems().add(e.toString());
+      case "thursday" -> thursdayEventView.getItems().add(e.toString());
+      case "friday" -> fridayEventView.getItems().add(e.toString());
+      case "saturday" -> saturdayEventView.getItems().add(e.toString());
+      default -> {
+        throw new IllegalArgumentException("Day entered is invalid");
       }
     }
   }
@@ -353,14 +406,11 @@ public class ControllerImpl implements Controller {
 
             if (durationResult.isPresent()) {
               double duration = Double.parseDouble(durationResult.get());
+              Event newEvent = new Event(name, desc, day, startTime, duration);
 
-              Day currentDay = bujoFile.days.get(bujoFile.days.size() - 1);
-
-              if (currentDay != null) {
-                Event newEvent = new Event(name, desc, day, startTime, duration);
-
-                currentDay.addEvent(newEvent);
-              }
+              events.add(name);
+              bujoModel.addEvent(newEvent, day);
+              displayEvents();
             }
           }
         }
