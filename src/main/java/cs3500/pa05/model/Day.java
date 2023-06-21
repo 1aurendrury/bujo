@@ -6,16 +6,16 @@ import java.util.List;
 
 public class Day {
   @JsonProperty("events")
-  List<Event> events;
+  public List<Event> events;
 
   @JsonProperty("tasks")
-  List<Task> tasks;
+  public List<Task> tasks;
 
   @JsonProperty("max-events")
-  private int maxEvents;
+  public int maxEvents;
 
   @JsonProperty("max-tasks")
-  private int maxTasks;
+  public int maxTasks;
 
   public Day (
       @JsonProperty("events") List<Event> events,

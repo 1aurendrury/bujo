@@ -239,7 +239,7 @@ public class ControllerImpl implements Controller {
           File file = new File(filePath);
 
           try {
-            objectMapper.writeValue(file, this.bujoFile);
+            objectMapper.writeValue(file, this.bujoModel);
             System.out.println("Saved successfully.");
           } catch (IOException e) {
             System.out.println("Failed to save the file: " + e.getMessage());
@@ -249,7 +249,7 @@ public class ControllerImpl implements Controller {
     } else {
       try {
         File file = new File(filePath);
-        objectMapper.writeValue(file, this.bujoFile);
+        objectMapper.writeValue(file, this.bujoModel);
         System.out.println("Saved successfully.");
       } catch (IOException e) {
         System.out.println("Failed to save the file: " + e.getMessage());
@@ -261,21 +261,26 @@ public class ControllerImpl implements Controller {
     ObjectMapper objectMapper = new ObjectMapper();
 
     FileChooser fileChooser = new FileChooser();
-    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("BUJO Files",
-        "*.bujo"));
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("BUJO Files", "*.bujo"));
 
     File selectedFile = fileChooser.showOpenDialog(this.stage);
 
     if (selectedFile != null) {
       try {
-        BujoFile bujoFile = objectMapper.readValue(selectedFile, BujoFile.class);
-
+        this.bujoModel = objectMapper.readValue(selectedFile, BujoModelImpl.class);
+        for (Task t : bujoModel.getTasks()) {
+          tasks.add(t.name);
+        }
+        filePath = selectedFile.getPath();
       } catch (IOException e) {
         System.err.println("Failed to open the file: " + e.getMessage());
       }
     } else {
       System.err.println("No file chosen.");
     }
+
+    displayTasks();
+    displayEvents();
   }
 
   void handleNewTask() {
@@ -329,34 +334,38 @@ public class ControllerImpl implements Controller {
   }
 
   void displayTasks() {
-    tasksQueueView.getItems().add(tasks.get(tasks.size() - 1));
-    Task t = bujoModel.getTasks().get(bujoModel.getTasks().size() - 1);
-    switch (t.getDay().toLowerCase()) {
-      case "sunday" -> sundayTaskView.getItems().add(t.toString());
-      case "monday" -> mondayTaskView.getItems().add(t.toString());
-      case "tuesday" -> tuesdayTaskView.getItems().add(t.toString());
-      case "wednesday" -> wednesdayTaskView.getItems().add(t.toString());
-      case "thursday" -> thursdayTaskView.getItems().add(t.toString());
-      case "friday" -> fridayTaskView.getItems().add(t.toString());
-      case "saturday" -> saturdayTaskView.getItems().add(t.toString());
-      default -> {
-        throw new IllegalArgumentException("Day entered is invalid");
+    if (tasks.size() > 0) {
+      tasksQueueView.getItems().add(tasks.get(tasks.size() - 1));
+      Task t = bujoModel.getTasks().get(bujoModel.getTasks().size() - 1);
+      switch (t.getDay().toLowerCase()) {
+        case "sunday" -> sundayTaskView.getItems().add(t.toString());
+        case "monday" -> mondayTaskView.getItems().add(t.toString());
+        case "tuesday" -> tuesdayTaskView.getItems().add(t.toString());
+        case "wednesday" -> wednesdayTaskView.getItems().add(t.toString());
+        case "thursday" -> thursdayTaskView.getItems().add(t.toString());
+        case "friday" -> fridayTaskView.getItems().add(t.toString());
+        case "saturday" -> saturdayTaskView.getItems().add(t.toString());
+        default -> {
+          throw new IllegalArgumentException("Day entered is invalid");
+        }
       }
     }
   }
 
   void displayEvents() {
-    Event e = bujoModel.getEvents().get(bujoModel.getEvents().size() - 1);
-    switch (e.getDay().toLowerCase()) {
-      case "sunday" -> sundayEventView.getItems().add(e.toString());
-      case "monday" -> mondayEventView.getItems().add(e.toString());
-      case "tuesday" -> tuesdayEventView.getItems().add(e.toString());
-      case "wednesday" -> wednesdayEventView.getItems().add(e.toString());
-      case "thursday" -> thursdayEventView.getItems().add(e.toString());
-      case "friday" -> fridayEventView.getItems().add(e.toString());
-      case "saturday" -> saturdayEventView.getItems().add(e.toString());
-      default -> {
-        throw new IllegalArgumentException("Day entered is invalid");
+    if (bujoModel.getEvents().size() > 0) {
+      Event e = bujoModel.getEvents().get(bujoModel.getEvents().size() - 1);
+      switch (e.getDay().toLowerCase()) {
+        case "sunday" -> sundayEventView.getItems().add(e.toString());
+        case "monday" -> mondayEventView.getItems().add(e.toString());
+        case "tuesday" -> tuesdayEventView.getItems().add(e.toString());
+        case "wednesday" -> wednesdayEventView.getItems().add(e.toString());
+        case "thursday" -> thursdayEventView.getItems().add(e.toString());
+        case "friday" -> fridayEventView.getItems().add(e.toString());
+        case "saturday" -> saturdayEventView.getItems().add(e.toString());
+        default -> {
+          throw new IllegalArgumentException("Day entered is invalid");
+        }
       }
     }
   }

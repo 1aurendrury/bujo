@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Event {
-  String name;
-  String desc;
-  String day;
-  int startTime; //between 1 and 24
-  double duration;
+  public String name;
+  public String desc;
+  public String day;
+  public int startTime; //between 1 and 24
+  public double duration;
 
   @JsonCreator
   public Event(@JsonProperty("name") String name,

@@ -7,10 +7,10 @@ import java.util.List;
  * Represents an instance of a BujoModel
  */
 public class BujoModelImpl implements BujoModel {
-  List<Day> days;
-  List<Event> allEvents;
-  List<Task> allTasks;
-  Theme theme;
+  public List<Day> days;
+  public List<Event> allEvents;
+  public List<Task> allTasks;
+  public Theme theme;
 
   public BujoModelImpl() {
     this.days = new ArrayList<>();
