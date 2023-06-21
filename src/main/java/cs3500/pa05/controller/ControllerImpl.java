@@ -9,29 +9,143 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class ControllerImpl implements Controller {
+  @FXML
   private Stage stage;
   private BujoFile bujoFile;
-  private Button save;
-  private Button openFile;
-  private Button addEvent;
-  private Button addTask;
   private List<Task> taskQueue;
-  private ComboBox<String> themePicker;
   private String theme;
-  private HBox versionControls = new HBox();
-  private HBox addControls = new HBox();
+  @FXML
   private Button settings;
   private String path;
+
+  // initialize all of the buttons
+  @FXML
+  private Scene lightmode;
+  @FXML
+  private AnchorPane entireScreen;
+  @FXML
+  private VBox sundayBox;
+  @FXML
+  private VBox mondayBox;
+  @FXML
+  private VBox tuesdayBox;
+  @FXML
+  private VBox wednesdayBox;
+  @FXML
+  private VBox thursdayBox;
+  @FXML
+  private VBox fridayBox;
+  @FXML
+  private VBox saturdayBox;
+  @FXML
+  private HBox statsBox;
+  @FXML
+  private HBox tasksBox;
+  @FXML
+  private VBox tasksQueue;
+  @FXML
+  private Label sundayLabel;
+  @FXML
+  private AnchorPane sundayTasks;
+  @FXML
+  private AnchorPane sundayEvents;
+  @FXML
+  private Label mondayLabel;
+  @FXML
+  private AnchorPane mondayTasks;
+  @FXML
+  private AnchorPane mondayEvents;
+  @FXML
+  private Label tuesdayLabel;
+  @FXML
+  private AnchorPane tuesdayTasks;
+  @FXML
+  private AnchorPane tuesdayEvents;
+  @FXML
+  private Label wednesdayLabel;
+  @FXML
+  private AnchorPane wednesdayTasks;
+  @FXML
+  private AnchorPane wednesdayEvents;
+  @FXML
+  private Label thursdayLabel;
+  @FXML
+  private AnchorPane thursdayTasks;
+  @FXML
+  private AnchorPane thursdayEvents;
+  @FXML
+  private Label fridayLabel;
+  @FXML
+  private AnchorPane fridayTasks;
+  @FXML
+  private AnchorPane fridayEvents;
+  @FXML
+  private Label saturdayLabel;
+  @FXML
+  private AnchorPane saturdayTasks;
+  @FXML
+  private AnchorPane saturdayEvents;
+  @FXML
+  private Button saveFile;
+  @FXML
+  private Button openFile;
+  @FXML
+  private ChoiceBox<String> chooseTheme;
+  @FXML
+  private Label tasksLabel;
+  @FXML
+  private AnchorPane tasksQueueBox;
+  @FXML
+  private ProgressBar taskProgressBar;
+  @FXML
+  private Label quotesNotesLabel;
+  @FXML
+  private AnchorPane quotesNotesBox;
+  @FXML
+  private TextField quoteBox;
+  @FXML
+  private Label statsLabel;
+  @FXML
+  private AnchorPane statsAP;
+  @FXML
+  private Label weekStatsBox;
+  @FXML
+  private Button addEvent;
+  @FXML
+  private Button addTask;
+
+
+
+
+  // things we need (as of now)
+  /*
+    - implement chooseTheme for themes (i can do this - lauren)
+    - implement the quotes/notes text box
+    - implement settings to choose max tasks and events
+    - weekly stats box
+
+   */
+
 
   public ControllerImpl(Stage stage, List<Day> days, List<Task> taskQueue, BujoFile bujoFile, String path) {
     this.stage = stage;
@@ -46,10 +160,10 @@ public class ControllerImpl implements Controller {
   }
 
   private void initButtons() {
-    save = new Button("Save");
-    save.setPrefWidth(50);
-    save.setPrefHeight(25);
-    save.setOnAction(e -> handleSave(path));
+    saveFile = new Button("Save");
+    saveFile.setPrefWidth(50);
+    saveFile.setPrefHeight(25);
+    saveFile.setOnAction(e -> handleSave(path));
 
     openFile = new Button("Open");
     openFile.setPrefWidth(50);
@@ -66,18 +180,13 @@ public class ControllerImpl implements Controller {
     addTask.setPrefHeight(25);
     addTask.setOnAction(e -> handleNewTask());
 
-    settings = new Button("Settings");
-    settings.setPrefWidth(50);
-    settings.setPrefHeight(25);
+
     settings.setOnAction(e -> handleSettings());
 
-    themePicker = new ComboBox<>();
-    themePicker.getItems().addAll("Light Theme", "Dark Theme");
-    themePicker.setValue("Light Theme");
-    themePicker.setOnAction(e -> handleThemeChange(themePicker.getValue()));
+    chooseTheme.getItems().addAll("Light Theme", "Dark Theme", "NEU Theme");
+    chooseTheme.setValue("Light Theme");
+    chooseTheme.setOnAction(e -> handleThemeChange(chooseTheme.getValue()));
 
-    addControls.getChildren().addAll(addEvent, addTask);
-    versionControls.getChildren().addAll(save, openFile);
   }
 
   void handleSave(String path) {

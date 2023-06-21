@@ -29,8 +29,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numTasksSun" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addTaskSun" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="sundayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -40,8 +38,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numEventsSun" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addEventSun" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -60,8 +56,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numTasksMon" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addTaskMon" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="mondayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -71,8 +65,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numEventsMon" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addEventMon" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -91,8 +83,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numTasksTues" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addTaskTues" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="tuesdayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -102,8 +92,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numEventsTues" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addEventTues" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -122,8 +110,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numTasksWed" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addTaskWed" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="wednesdayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -133,8 +119,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numEventsWed" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addEventWed" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -153,8 +137,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numTasksThurs" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addTaskThurs" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="thursdayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -164,8 +146,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numEventsThurs" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addEventThurs" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -184,8 +164,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numTasksFri" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addTaskFri" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="fridayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -195,8 +173,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numEventsFri" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addEventFri" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -215,8 +191,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numTasksSat" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addTaskSat" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="saturdayEvents" prefHeight="301.0" prefWidth="173.0">
@@ -226,8 +200,6 @@
                            <Font name="Rockwell" size="18.0" />
                         </font>
                      </Label>
-                     <ChoiceBox fx:id="numEventsSat" layoutX="67.0" layoutY="3.0" prefHeight="25.0" prefWidth="45.0" />
-                     <Button fx:id="addEventSat" layoutX="129.0" layoutY="1.0" mnemonicParsing="false" text="+" />
                   </children>
                </AnchorPane>
             </children>
@@ -241,30 +213,26 @@
          </ChoiceBox>
          <VBox fx:id="tasksQueue" layoutX="1231.0" layoutY="36.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Tasks Queue">
+               <Label fx:id="tasksLabel" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Tasks Queue">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>
                </Label>
-               <VBox prefHeight="647.0" prefWidth="173.0">
+               <AnchorPane fx:id="tasksQueueBox" prefHeight="631.0" prefWidth="173.0">
                   <children>
-                     <AnchorPane prefHeight="631.0" prefWidth="173.0">
-                        <children>
-                           <ProgressBar fx:id="taskProgressBar" layoutX="-6.0" layoutY="5.0" prefHeight="18.0" prefWidth="167.0" progress="0.0" />
-                        </children>
-                     </AnchorPane>
+                     <ProgressBar fx:id="taskProgressBar" layoutX="-6.0" layoutY="5.0" prefHeight="18.0" prefWidth="167.0" progress="0.0" />
                   </children>
-               </VBox>
+               </AnchorPane>
             </children>
          </VBox>
          <HBox fx:id="quotesBox" layoutX="4.0" layoutY="732.0" prefHeight="137.0" prefWidth="688.0">
             <children>
-               <Label prefHeight="41.0" prefWidth="158.0" text="Quotes and Notes: ">
+               <Label fx:id="quotesNotesLabel" prefHeight="41.0" prefWidth="158.0" text="Quotes and Notes: ">
                   <font>
                      <Font name="Rockwell" size="18.0" />
                   </font>
                </Label>
-               <AnchorPane prefHeight="137.0" prefWidth="527.0">
+               <AnchorPane fx:id="quotesNotesBox" prefHeight="137.0" prefWidth="527.0">
                   <children>
                      <TextField fx:id="quoteBox" layoutY="1.0" prefHeight="129.0" prefWidth="528.0" />
                   </children>
@@ -273,17 +241,20 @@
          </HBox>
          <HBox fx:id="statsBox" layoutX="717.0" layoutY="736.0" prefHeight="129.0" prefWidth="688.0">
             <children>
-               <Label prefHeight="41.0" prefWidth="158.0" text="Weekly Statistics:">
+               <Label fx:id="statsLabel" prefHeight="41.0" prefWidth="158.0" text="Weekly Statistics:">
                   <font>
                      <Font size="18.0" />
                   </font>
                </Label>
-               <AnchorPane prefHeight="137.0" prefWidth="527.0">
+               <AnchorPane fx:id="statsAP" prefHeight="137.0" prefWidth="527.0">
                   <children>
-                     <Label fx:id="weekStatsBox" layoutY="-3.0" prefHeight="128.0" prefWidth="525.0" text="Stats go here: " />
+                     <Label fx:id="weekStatsBox" layoutY="-3.0" prefHeight="128.0" prefWidth="525.0" text="Stats go here:" />
                   </children>
                </AnchorPane>
             </children>
          </HBox>
+         <Button fx:id="addEvent" layoutX="918.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Add Event" />
+         <Button fx:id="addTask" layoutX="802.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Add Task" />
+         <Button fx:id="settings" layoutX="33.0" layoutY="12.0" mnemonicParsing="false" text="Settings" />
       </children></AnchorPane>
 </Scene>
