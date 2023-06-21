@@ -6,10 +6,10 @@ import java.util.List;
 
 public class Day {
   @JsonProperty("events")
-  private List<Event> events;
+  List<Event> events;
 
   @JsonProperty("tasks")
-  private List<Task> tasks;
+  List<Task> tasks;
 
   @JsonProperty("max-events")
   private int maxEvents;
@@ -26,6 +26,14 @@ public class Day {
     this.tasks = tasks;
     this.maxEvents = maxEvents;
     this.maxTasks = maxTasks;
+  }
+
+  //constructor used in testing
+  public Day() {
+    this.events = new ArrayList<>();
+    this.tasks = new ArrayList<>();
+    this.maxEvents = 0;
+    this.maxTasks = 0;
   }
 
   public void addEvent(Event event) {

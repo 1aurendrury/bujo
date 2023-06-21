@@ -3,6 +3,9 @@ package cs3500.pa05.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents an instance of a BujoModel
+ */
 public class BujoModelImpl implements BujoModel {
   List<Day> days;
   List<Event> allEvents;
@@ -16,28 +19,36 @@ public class BujoModelImpl implements BujoModel {
     this.theme = null;
   }
 
-  public BujoModelImpl(List<Day> days, List<Event> allEvents, List<Task> allTasks, Theme theme) {
-    this.days = days;
-    this.allEvents = allEvents;
-    this.allTasks = allTasks;
-    this.theme = theme;
-  }
-
+  /**
+   * Changes the theme of a BujoModel
+   * @param theme the new theme for this BujoModel, as a Theme datatype
+   */
   @Override
   public void changeTheme(Theme theme) {
     this.theme = theme;
   }
 
+  /**
+   * Adds a task to this BujoModel's list of tasks
+   * @param task the task to be added to this BujoModel, as a Task
+   */
   @Override
   public void addTask(Task task) {
     this.allTasks.add(task);
   }
 
+  /**
+   * Adds an event to this BujoModel's list of events
+   * @param event the event to be added to this BujoModel, as an event
+   */
   @Override
   public void addEvent(Event event) {
     this.allEvents.add(event);
   }
 
+  /**
+   * Generates a week's worth of days, starting with Sunday. Maximum events and tasks are set to 1
+   */
   public void createDays() {
     List<Day> days = new ArrayList<>();
     Day sunday = new Day(new ArrayList<>(), new ArrayList<>(), 1, 1);
@@ -59,6 +70,10 @@ public class BujoModelImpl implements BujoModel {
     this.days = days;
   }
 
+  /**
+   * Provides the tasks from a BujoModelImpl
+   * @return the list of tasks attatched to this BujoModelImpl
+   */
   public List<Task> getTasks() {
     return this.allTasks;
   }

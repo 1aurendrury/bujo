@@ -15,19 +15,7 @@ public class Event {
                @JsonProperty("desc") String desc,
                @JsonProperty("day") String day,
                @JsonProperty("startTime") int startTime,
-               @JsonProperty("duration") int duration) {
-    this.name = name;
-    this.desc = desc;
-    this.day = day;
-    if (startTime >= 1 && startTime <= 24) {
-      this.startTime = startTime;
-    } else {
-      throw new IllegalArgumentException("Start time must be between 1 and 24, inclusive.");
-    }
-    this.duration = duration;
-  }
-
-  public Event (String name, String desc, String day, int startTime, double duration) {
+               @JsonProperty("duration") double duration) {
     this.name = name;
     this.desc = desc;
     this.day = day;
