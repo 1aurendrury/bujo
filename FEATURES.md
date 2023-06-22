@@ -15,6 +15,6 @@
 
 ## Section 4: Quality of Life
 - Links
-- Mind Changes
+- Custom Themes
 
 ## Section 5: Extra Credit

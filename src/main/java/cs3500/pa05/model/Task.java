@@ -66,13 +66,13 @@ public class Task {
    * @return url of the task
    */
   public String getUrl() {
-    int urlStart = desc.indexOf("http");
-    int urlEnd = desc.indexOf(".") + 4;
     String url;
     if (desc.contains("https://") || desc.contains("http://")) {
+      int urlStart = desc.indexOf("http");
+      int urlEnd = desc.indexOf(".") + 4;
       url = desc.substring(urlStart, urlEnd);
     } else {
-      url = null;
+      url = "";
     }
     return url;
   }
