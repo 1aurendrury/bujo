@@ -17,7 +17,7 @@
       <children>
          <VBox fx:id="sundayBox" layoutX="7.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
-               <Label fx:id="sundayLabel" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Sunday">
+               <Label fx:id="sundayLabel1" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Sunday">
                   <font>
                      <Font name="Rockwell" size="24.0" />
                   </font>

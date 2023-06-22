@@ -10,6 +10,7 @@ import cs3500.pa05.view.BujoSceneImpl;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import javafx.fxml.FXML;
@@ -71,8 +72,10 @@ public class ControllerImpl implements Controller {
   private HBox tasksBox;
   @FXML
   private VBox tasksQueue;
+
   @FXML
-  private Label sundayLabel;
+  private Label sundayLabel1;
+
   @FXML
   private AnchorPane sundayTasks;
   @FXML
@@ -180,8 +183,8 @@ public class ControllerImpl implements Controller {
   @FXML
   private ImageView currentBG;
 
-
-  public  List<Label> allText;
+  @FXML
+  private ArrayList<Label> allText;
 
 
 
@@ -204,9 +207,8 @@ public class ControllerImpl implements Controller {
     this.taskQueue = taskQueue;
     this.path = path;
     this.bujoModel = bujoModel;
-    allText.addAll(List.of(sundayLabel, mondayLabel, tuesdayLabel,
-        wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel,
-        weekStatsBox, statsLabel, quotesNotesLabel, tasksLabel));
+    this.allText = new ArrayList<Label>();
+
   }
 
   @Override
@@ -470,6 +472,9 @@ public class ControllerImpl implements Controller {
 
   void handleThemeChange(String theme) {
     this.theme = theme;
+    allText.addAll(Arrays.asList(sundayLabel1, mondayLabel, tuesdayLabel,
+        wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel, tasksLabel,
+        quotesNotesLabel, statsLabel, weekStatsBox));
     if (theme.equals("Light Theme")) {
       currentBG = new ImageView("/src/main/resources/whitebg.jpg");
       for (Label l: allText) {

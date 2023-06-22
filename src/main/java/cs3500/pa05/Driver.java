@@ -20,7 +20,7 @@ public class Driver extends Application {
 
     List<Day> days = new ArrayList<>();
     List<Task> taskQueue = new ArrayList<>();
-    BujoFile file = new BujoFile("lightmode.fxml", "light mode", days);
+    BujoFile file = new BujoFile("lightmode.fxml", "Light Theme", days);
 
     BujoModelImpl model = new BujoModelImpl();
     ControllerImpl controller = new ControllerImpl(stage,
