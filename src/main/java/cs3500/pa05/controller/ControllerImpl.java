@@ -17,8 +17,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
@@ -29,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -442,27 +445,40 @@ public class ControllerImpl implements Controller {
   }
 
   void handleSettings() {
-    TextInputDialog maxEventsDialog = new TextInputDialog();
-    maxEventsDialog.setTitle("Settings");
-    maxEventsDialog.setHeaderText("Set maximum number of events per day: ");
-    maxEventsDialog.setContentText("Maximum Events: ");
-    Optional<String> maxEventsResult = maxEventsDialog.showAndWait();
+    Dialog<ButtonType> dialog = new Dialog<>();
+    dialog.setTitle("Settings");
+    dialog.setHeaderText("Set maximum number of tasks and events per day:");
 
-    if (maxEventsResult.isPresent()) {
-      int maxEvents = Integer.parseInt(maxEventsResult.get());
+    Label maxTasksLabel = new Label("Maximum Tasks:");
+    Label maxEventsLabel = new Label("Maximum Events:");
+    TextField maxTasksTextField = new TextField();
+    TextField maxEventsTextField = new TextField();
 
-      TextInputDialog maxTasksDialog = new TextInputDialog();
-      maxTasksDialog.setTitle("Settings");
-      maxTasksDialog.setHeaderText("Set maximum number of tasks per day:");
-      maxTasksDialog.setContentText("Maximum Tasks: ");
-      Optional<String> maxTasksResult = maxTasksDialog.showAndWait();
+    GridPane grid = new GridPane();
+    grid.add(maxTasksLabel, 0, 0);
+    grid.add(maxTasksTextField, 1, 0);
+    grid.add(maxEventsLabel, 0, 1);
+    grid.add(maxEventsTextField, 1, 1);
+    dialog.getDialogPane().setContent(grid);
 
-      if (maxTasksResult.isPresent()) {
-        int maxTasks = Integer.parseInt(maxTasksResult.get());
+    ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+    dialog.getDialogPane().getButtonTypes().addAll(okButton, ButtonType.CANCEL);
+
+    dialog.setResultConverter(buttonType -> {
+      if (buttonType == okButton) {
+        String maxTasksText = maxTasksTextField.getText();
+        String maxEventsText = maxEventsTextField.getText();
+
+        int maxTasks = Integer.parseInt(maxTasksText);
+        int maxEvents = Integer.parseInt(maxEventsText);
+
         handleMaxTasksEvents(maxTasks, maxEvents);
         saveMaxTasksEvents(maxTasks, maxEvents);
       }
-    }
+      return null;
+    });
+
+    dialog.showAndWait();
   }
 
   private void handleMaxTasksEvents(int maxTasks, int maxEvents) {
