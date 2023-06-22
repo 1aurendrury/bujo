@@ -33,4 +33,16 @@ class EventTest {
     assertEquals(24, event3.startTime);
   }
 
+  @Test
+  void testGetDay() {
+    Event event = new Event("event", "desc", "Monday", 1, 1);
+    assertEquals("Monday", event.getDay());
+  }
+
+  @Test
+  void testToString() {
+    Event event = new Event("event", "desc", "Monday", 1, 1);
+    assertEquals("event (1:00 – 2:00)\ndesc\n", event.toString());
+  }
+
 }
