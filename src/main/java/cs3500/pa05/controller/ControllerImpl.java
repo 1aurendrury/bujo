@@ -26,9 +26,11 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -175,6 +177,13 @@ public class ControllerImpl implements Controller {
   private List<String> events;
   private String filePath;
 
+  @FXML
+  private ImageView currentBG;
+
+
+  public  List<Label> allText;
+
+
 
   // things we need (as of now)
   /*
@@ -195,6 +204,9 @@ public class ControllerImpl implements Controller {
     this.taskQueue = taskQueue;
     this.path = path;
     this.bujoModel = bujoModel;
+    allText.addAll(List.of(sundayLabel, mondayLabel, tuesdayLabel,
+        wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel,
+        weekStatsBox, statsLabel, quotesNotesLabel, tasksLabel));
   }
 
   @Override
@@ -458,6 +470,33 @@ public class ControllerImpl implements Controller {
 
   void handleThemeChange(String theme) {
     this.theme = theme;
+    if (theme.equals("Light Theme")) {
+      currentBG = new ImageView("/src/main/resources/whitebg.jpg");
+      for (Label l: allText) {
+        l.setFont(Font.font("Rockwell"));
+      }
+      for (Label l: allText) {
+        l.setStyle("-fx-text-fill: black");
+      }
+    }
+    else if (theme.equals("Dark Theme")) {
+      currentBG = new ImageView("/src/main/resources/dbg.jpg");
+      for (Label l: allText) {
+        l.setStyle("-fx-text-fill: white");
+      }
+      for (Label l: allText) {
+        l.setFont(Font.font("Arial"));
+      }
+    }
+    else {
+      currentBG = new ImageView("/src/main/resources/neubg.jpg");
+      for (Label l: allText) {
+        l.setStyle("-fx-text-fill: red");
+      }
+      for (Label l: allText) {
+        l.setFont(Font.font("Eras Bold Itc"));
+      }
+    }
     handleSave();
   }
 
