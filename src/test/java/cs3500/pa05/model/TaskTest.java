@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ class TaskTest {
   }
 
   @Test
-  void testGetURL() {
+  void testGetUrl() {
     string1 = "this is a message that https://google.com contains a link.";
     task3 = new Task("task", string1, "monday", false);
     assertEquals("https://google.com", task3.getURL());

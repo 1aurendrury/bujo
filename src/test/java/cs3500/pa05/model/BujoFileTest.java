@@ -1,6 +1,6 @@
 package cs3500.pa05.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ class BujoFileTest {
   Day fri;
   Day sat;
   Day sun;
+
   @BeforeEach
   void setup() {
     this.monday = new Day();

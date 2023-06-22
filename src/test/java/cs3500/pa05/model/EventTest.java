@@ -1,6 +1,8 @@
 package cs3500.pa05.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -46,7 +48,7 @@ class EventTest {
   }
 
   @Test
-  void testGetURL() {
+  void testGetUrl() {
     String string1 = "this is a message that https://google.com contains a link.";
     Event event1 = new Event("event", string1, "monday", 1, 1);
     assertEquals("https://google.com", event1.getURL());
