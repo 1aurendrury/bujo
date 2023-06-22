@@ -17,7 +17,7 @@
 <Scene fx:id="lightMode" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <AnchorPane fx:id="entireScreen" prefHeight="856.0" prefWidth="1404.0">
       <children>
-         <ImageView fx:id="currentBG" fitHeight="908.0" fitWidth="1449.0">
+         <ImageView fx:id="currentBg" fitHeight="908.0" fitWidth="1449.0">
             <image>
                <Image url="@whitebg.jpg" />
             </image>
