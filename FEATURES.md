@@ -12,8 +12,6 @@
 - Quotes and Notes
 - Mini Viewer
 - Weekly Overview
-- Progress Bar
-
 
 ## Section 4: Quality of Life
 - Links

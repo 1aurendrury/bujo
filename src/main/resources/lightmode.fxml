@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
@@ -14,7 +13,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <Scene fx:id="lightMode" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <AnchorPane fx:id="entireScreen" prefHeight="856.0" prefWidth="1404.0">
@@ -227,8 +225,8 @@
                </AnchorPane>
             </children>
          </VBox>
-         <Button fx:id="saveFile" layoutX="1231.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Save" />
-         <Button fx:id="openFile" layoutX="1311.0" layoutY="13.0" mnemonicParsing="false" text="Open File" />
+         <Button fx:id="saveFile" layoutX="1231.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Save" />
+         <Button fx:id="openFile" layoutX="1311.0" layoutY="12.0" mnemonicParsing="false" text="Open File" />
          <ChoiceBox fx:id="chooseTheme" accessibleText="Theme" layoutX="1069.0" layoutY="12.0" prefWidth="150.0">
             <opaqueInsets>
                <Insets />
@@ -276,8 +274,28 @@
                </AnchorPane>
             </children>
          </HBox>
-         <Button fx:id="addEvent" layoutX="918.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Add Event" />
-         <Button fx:id="addTask" layoutX="802.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Add Task" />
+         <Button fx:id="addEvent" layoutX="918.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Add Event" />
+         <Button fx:id="addTask" layoutX="802.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Add Task" />
          <Button fx:id="settings" layoutX="33.0" layoutY="12.0" mnemonicParsing="false" text="Settings" />
+         <ChoiceBox fx:id="changeFont" accessibleText="Theme" layoutX="121.0" layoutY="12.0" prefHeight="17.0" prefWidth="78.0">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </ChoiceBox>
+         <ChoiceBox fx:id="changeBGTeam" accessibleText="Theme" layoutX="230.0" layoutY="12.0" prefHeight="17.0" prefWidth="78.0">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </ChoiceBox>
+         <ChoiceBox fx:id="changeFontColor" accessibleText="Theme" layoutX="345.0" layoutY="12.0" prefHeight="17.0" prefWidth="78.0">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </ChoiceBox>
+         <ChoiceBox fx:id="glowMode" accessibleText="Theme" layoutX="453.0" layoutY="12.0" prefHeight="17.0" prefWidth="78.0">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </ChoiceBox>
       </children></AnchorPane>
 </Scene>

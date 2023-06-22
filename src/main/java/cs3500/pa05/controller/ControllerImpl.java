@@ -29,6 +29,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -219,6 +220,15 @@ public class ControllerImpl implements Controller {
   @FXML
   private Label event7;
 
+  @FXML
+  private ChoiceBox<String> changeFont;
+  @FXML
+  private ChoiceBox<String> glowMode;
+  @FXML
+  private ChoiceBox<String> changeBGTeam;
+  @FXML
+  private ChoiceBox<String> changeFontColor;
+
 
 
   public ControllerImpl(Stage stage, List<Task> taskQueue, BujoFile bujoFile, String path,
@@ -253,6 +263,25 @@ public class ControllerImpl implements Controller {
     chooseTheme.getItems().addAll("Light Theme", "Dark Theme", "NEU Theme");
     chooseTheme.setValue("Light Theme");
     chooseTheme.setOnAction(e -> handleThemeChange(chooseTheme.getValue()));
+
+    changeBGTeam.getItems().addAll("Huskies", "Leafs", "Stars", "Bruins", "Flyers");
+    changeBGTeam.setValue("Change BG Color");
+    changeBGTeam.setOnAction(e -> handleChangeBGTeam(changeBGTeam.getValue()));
+
+    changeFont.getItems().addAll("Comic Sans MS", "Rockwell", "Eras Bold Itc", "Arial");
+    changeFont.setValue("Rockwell");
+    changeFont.setOnAction(e -> handleChangeFont(changeFont.getValue()));
+
+    changeFontColor.getItems().addAll("Red", "Blue", "Green", "Purple", "Orange",
+        "Black", "White");
+    changeFontColor.setValue("Black");
+    changeFontColor.setOnAction(e -> handleChangeFontColor(changeFontColor.getValue()));
+
+    glowMode.getItems().addAll("Glow", "None");
+    glowMode.setValue("None");
+    glowMode.setOnAction(e -> handleGlowMode(glowMode.getValue()));
+
+
   }
 
   void handleSave() {
@@ -585,4 +614,68 @@ public class ControllerImpl implements Controller {
     weekStatsBox.setText(stats);
     weekStatsBox.setStyle("-fx-alignment: baseline-left;");
   }
+
+
+
+  void handleChangeBGTeam(String color) {
+    Image huskies = new Image("neubg.jpg");
+    Image leafs = new Image("leafs.jpg");
+    Image stars = new Image("stars.png");
+    Image bruins = new Image("bruins.jpg");
+    Image flyers = new Image("flyers.png");
+
+
+    if (color.equals("Huskies")) {
+      currentBG.setImage(huskies);
+    }
+    else if (color.equals("Leafs")) {
+      currentBG.setImage(leafs);
+
+    }
+    else if (color.equals("Stars")) {
+      currentBG.setImage(stars);
+
+    }
+    else if (color.equals("Bruins")) {
+      currentBG.setImage(bruins);
+
+    }
+    else if (color.equals("Flyers")) {
+      currentBG.setImage(flyers);
+
+    }
+
+  }
+
+  void handleChangeFont(String font) {
+    for (Label l: allText) {
+      l.setFont(Font.font(font));
+    }
+  }
+
+  void handleChangeFontColor(String color) {
+    for (Label l: allText) {
+      l.setStyle("-fx-text-fill:" + color);
+    }
+  }
+
+  void handleGlowMode(String type) {
+    Glow glow = new Glow();
+    if (type.equals("Glow")) {
+      for (Label l: allText) {
+        glow.setLevel(100);
+        l.setEffect(glow);
+      }
+    }
+    else {
+      for (Label l: allText) {
+        glow.setLevel(0);
+        l.setEffect(glow);
+
+      }
+    }
+
+  }
+
+
 }
