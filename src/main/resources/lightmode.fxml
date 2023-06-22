@@ -250,7 +250,7 @@
             <children>
                <Label fx:id="quotesNotesLabel" prefHeight="41.0" prefWidth="218.0" text="Quotes and Notes:">
                   <font>
-                     <Font name="Rockwell" size="16.0" />
+                     <Font name="Rockwell" size="14.0" />
                   </font>
                </Label>
                <AnchorPane fx:id="quotesNotesBox" prefHeight="137.0" prefWidth="598.0">
@@ -262,14 +262,14 @@
          </HBox>
          <HBox fx:id="statsBox" layoutX="757.0" layoutY="734.0" prefHeight="129.0" prefWidth="649.0">
             <children>
-               <Label fx:id="statsLabel" prefHeight="41.0" prefWidth="225.0" text="Weekly Statistics:">
+               <Label fx:id="statsLabel" prefHeight="41.0" prefWidth="155.0" text="Weekly Statistics:">
                   <font>
-                     <Font size="17.0" />
+                     <Font size="14.0" />
                   </font>
                </Label>
-               <AnchorPane fx:id="statsAP" prefHeight="129.0" prefWidth="485.0">
+               <AnchorPane fx:id="statsAP" prefHeight="129.0" prefWidth="449.0">
                   <children>
-                     <Label fx:id="weekStatsBox" layoutX="39.0" prefHeight="128.0" prefWidth="482.0" text="Stats go here:" />
+                     <Label fx:id="weekStatsBox" layoutX="138.0" prefHeight="128.0" prefWidth="383.0" text="Stats go here:" />
                   </children>
                </AnchorPane>
             </children>
@@ -277,22 +277,22 @@
          <Button fx:id="addEvent" layoutX="918.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Add Event" />
          <Button fx:id="addTask" layoutX="802.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Add Task" />
          <Button fx:id="settings" layoutX="33.0" layoutY="12.0" mnemonicParsing="false" text="Settings" />
-         <ChoiceBox fx:id="changeFont" accessibleText="Theme" layoutX="121.0" layoutY="12.0" prefHeight="17.0" prefWidth="78.0">
+         <ChoiceBox fx:id="changeFont" accessibleText="Theme" layoutX="105.0" layoutY="12.0" prefHeight="25.0" prefWidth="106.0">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
          </ChoiceBox>
-         <ChoiceBox fx:id="changeBGTeam" accessibleText="Theme" layoutX="230.0" layoutY="12.0" prefHeight="17.0" prefWidth="78.0">
+         <ChoiceBox fx:id="changeBGTeam" accessibleText="Theme" layoutX="230.0" layoutY="12.0" prefHeight="25.0" prefWidth="105.0">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
          </ChoiceBox>
-         <ChoiceBox fx:id="changeFontColor" accessibleText="Theme" layoutX="345.0" layoutY="12.0" prefHeight="17.0" prefWidth="78.0">
+         <ChoiceBox fx:id="changeFontColor" accessibleText="Theme" layoutX="360.0" layoutY="12.0" prefHeight="25.0" prefWidth="99.0">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
          </ChoiceBox>
-         <ChoiceBox fx:id="glowMode" accessibleText="Theme" layoutX="453.0" layoutY="12.0" prefHeight="17.0" prefWidth="78.0">
+         <ChoiceBox fx:id="glowMode" accessibleText="Theme" layoutX="490.0" layoutY="12.0" prefHeight="25.0" prefWidth="105.0">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>

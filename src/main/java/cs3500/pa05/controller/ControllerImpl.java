@@ -269,8 +269,8 @@ public class ControllerImpl implements Controller {
     chooseTheme.setValue("Light Theme");
     chooseTheme.setOnAction(e -> handleThemeChange(chooseTheme.getValue()));
 
-    changeBGTeam.getItems().addAll("Huskies", "Leafs", "Stars", "Bruins", "Flyers");
-    changeBGTeam.setValue("Change BG Color");
+    changeBGTeam.getItems().addAll("None", "Huskies", "Leafs", "Stars", "Bruins", "Flyers");
+    changeBGTeam.setValue("Change BG Team");
     changeBGTeam.setOnAction(e -> handleChangeBGTeam(changeBGTeam.getValue()));
 
     changeFont.getItems().addAll("Comic Sans MS", "Rockwell", "Eras Bold Itc", "Arial");
@@ -579,18 +579,23 @@ public class ControllerImpl implements Controller {
     bujoModel.setMaxEventsPerDay(maxEvents);
   }
 
+  void initalizeAllText() {
+    allText.addAll(Arrays.asList(sundayLabel1, mondayLabel, tuesdayLabel,
+        wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel, tasksLabel,
+        quotesNotesLabel, statsLabel, weekStatsBox, task1,
+        task2, task3, task4, task5, task6, task7, event1,
+        event2, event3, event4, event5, event6, event7));
+  }
+
+
   void handleThemeChange(String theme) {
     this.theme = theme;
     Image neubg = new Image("neu.jpg");
     Image whitebg = new Image("whitebg.jpg");
     Image dbg = new Image("dbg.jpg");
 
+    initalizeAllText();
 
-    allText.addAll(Arrays.asList(sundayLabel1, mondayLabel, tuesdayLabel,
-        wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel, tasksLabel,
-        quotesNotesLabel, statsLabel, weekStatsBox, task1,
-        task2, task3, task4, task5, task6, task7, event1,
-        event2, event3, event4, event5, event6, event7));
     if (theme.equals("Light Theme")) {
       currentBG.setImage(whitebg);
       for (Label l : allText) {
@@ -660,6 +665,10 @@ public class ControllerImpl implements Controller {
     Image stars = new Image("stars.png");
     Image bruins = new Image("bruins.jpg");
     Image flyers = new Image("flyers.png");
+    Image whitebg = new Image("whitebg.jpg");
+
+
+    initalizeAllText();
 
 
     if (color.equals("Huskies")) {
@@ -681,21 +690,27 @@ public class ControllerImpl implements Controller {
       currentBG.setImage(flyers);
 
     }
+    else {
+      currentBG.setImage(whitebg);
+    }
   }
 
   void handleChangeFont(String font) {
+    initalizeAllText();
     for (Label l: allText) {
       l.setFont(Font.font(font));
     }
   }
 
   void handleChangeFontColor(String color) {
+    initalizeAllText();
     for (Label l: allText) {
       l.setStyle("-fx-text-fill:" + color);
     }
   }
 
   void handleGlowMode(String type) {
+    initalizeAllText();
     Glow glow = new Glow();
     if (type.equals("Glow")) {
       for (Label l: allText) {
