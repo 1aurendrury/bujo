@@ -17,12 +17,12 @@ public class BujoModelImpl implements BujoModel {
 
   public BujoModelImpl() {
     this.days = new ArrayList<>();
-    createDays();
     this.allEvents = new ArrayList<>();
     this.allTasks = new ArrayList<>();
     this.theme = null;
-    this.maxEventsPerDay = 0;
-    this.maxTasksPerDay = 0;
+    this.maxEventsPerDay = 100;
+    this.maxTasksPerDay = 100;
+    createDays();
   }
 
   /**

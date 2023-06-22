@@ -262,7 +262,7 @@
                </Label>
                <AnchorPane fx:id="statsAP" prefHeight="129.0" prefWidth="485.0">
                   <children>
-                     <Label fx:id="weekStatsBox" layoutX="39.0" prefHeight="128.0" prefWidth="482.0" text="Stats go here:" />
+                     <Label fx:id="weekStatsBox" layoutX="-130.0" layoutY="20.0" prefHeight="110.0" prefWidth="482.0" />
                   </children>
                </AnchorPane>
             </children>

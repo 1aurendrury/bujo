@@ -189,18 +189,6 @@ public class ControllerImpl implements Controller {
   @FXML
   private ArrayList<Label> allText;
 
-
-
-  // things we need (as of now)
-  /*
-    - implement chooseTheme for themes (i can do this - lauren)
-    - implement the quotes/notes text box
-    - implement settings to choose max tasks and events
-    - weekly stats box
-
-   */
-
-
   public ControllerImpl(Stage stage, List<Task> taskQueue, BujoFile bujoFile, String path,
                         BujoModelImpl bujoModel) {
     this.tasks = new ArrayList<>();
@@ -211,12 +199,12 @@ public class ControllerImpl implements Controller {
     this.path = path;
     this.bujoModel = bujoModel;
     this.allText = new ArrayList<Label>();
-
   }
 
   @Override
   public void run() {
     initButtons();
+    displayStats();
   }
 
   private void initButtons() {
@@ -233,7 +221,6 @@ public class ControllerImpl implements Controller {
     chooseTheme.getItems().addAll("Light Theme", "Dark Theme", "NEU Theme");
     chooseTheme.setValue("Light Theme");
     chooseTheme.setOnAction(e -> handleThemeChange(chooseTheme.getValue()));
-
   }
 
   void handleSave() {
@@ -345,6 +332,7 @@ public class ControllerImpl implements Controller {
           tasks.add(name);
           bujoModel.addTask(newTask, day);
           displayTasks();
+          displayStats();
         }
       }
     }
@@ -437,6 +425,7 @@ public class ControllerImpl implements Controller {
               events.add(name);
               bujoModel.addEvent(newEvent, day);
               displayEvents();
+              displayStats();
             }
           }
         }
@@ -531,5 +520,24 @@ public class ControllerImpl implements Controller {
     warningAlert.setTitle("Warning");
     warningAlert.setContentText(message);
     warningAlert.showAndWait();
+  }
+
+  void displayStats() {
+    String stats;
+    int numTasksCompleted = 0;
+    for (Task t : bujoModel.getTasks()) {
+      if (t.isComplete) {
+        numTasksCompleted++;
+      }
+    }
+    int percentage = 0;
+    if (tasks.size() != 0) {
+      percentage = (int) ((double) numTasksCompleted / (double) tasks.size() * 100);
+    }
+    stats = "Total number of tasks this week: " + tasks.size()
+    + "\nTotal number of events this week: " + events.size()
+    + "\nPercentage of tasks completed: " + percentage;
+    weekStatsBox.setText(stats);
+    weekStatsBox.setStyle("-fx-alignment: baseline-left;");
   }
 }
