@@ -47,7 +47,7 @@ public class Event {
   public String toString() {
     int endHour = startTime + (int) duration;
     int endMinute = (int) (duration % 1 * 60);
-    return name + " (" + startTime + ":00 – " + endHour
+    return name + " (" + startTime + ":00 - " + endHour
         + ":" + String.format("%02d" , endMinute) + ")" + "\n" + desc + "\n";
   }
 
