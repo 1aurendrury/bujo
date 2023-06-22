@@ -3,6 +3,9 @@ package cs3500.pa05.view;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+/**
+ * Represents the event view
+ */
 public class EventView extends VBox {
 
   public Label name;

@@ -3,6 +3,9 @@ package cs3500.pa05.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Represents an event
+ */
 public class Event {
   public String name;
   public String desc;
@@ -27,10 +30,20 @@ public class Event {
     this.duration = duration;
   }
 
+  /**
+   * Returns the day of the event
+   *
+   * @return day of the event
+   */
   public String getDay() {
     return this.day;
   }
 
+  /**
+   * Converts the event to a string
+   *
+   * @return event representation
+   */
   public String toString() {
     int endHour = startTime + (int) duration;
     int endMinute = (int) (duration % 1 * 60);
@@ -38,6 +51,11 @@ public class Event {
         + ":" + String.format("%02d" , endMinute) + ")" + "\n" + desc + "\n";
   }
 
+  /**
+   * Returns the URL in the description of an event
+   *
+   * @return url of the event
+   */
   public String getURL() {
     int urlStart = desc.indexOf("http");
     int urlEnd = desc.indexOf(".") + 4;

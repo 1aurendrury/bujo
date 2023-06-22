@@ -9,7 +9,6 @@ import cs3500.pa05.model.Task;
 import cs3500.pa05.view.BujoSceneImpl;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +21,6 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -39,13 +37,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+/**
+ * Represents the controller implementation
+ */
 public class ControllerImpl implements Controller {
   @FXML
   private Stage stage;
@@ -234,8 +233,15 @@ public class ControllerImpl implements Controller {
   @FXML
   private ChoiceBox<String> changeFontColor;
 
-
-
+  /**
+   * Represents the constructor for the controller implementation
+   *
+   * @param stage primary stage used in the application
+   * @param taskQueue task queue
+   * @param bujoFile .bujo file
+   * @param path file path
+   * @param bujoModel model
+   */
   public ControllerImpl(Stage stage, List<Task> taskQueue, BujoFile bujoFile, String path,
                         BujoModelImpl bujoModel) {
     this.tasks = new ArrayList<>();
@@ -248,12 +254,18 @@ public class ControllerImpl implements Controller {
     this.allText = new ArrayList<Label>();
   }
 
+  /**
+   * Runs the controller
+   */
   @Override
   public void run() {
     initButtons();
     displayStats();
   }
 
+  /**
+   * Initializes the buttons
+   */
   private void initButtons() {
     saveFile.setOnAction(e -> handleSave());
 
@@ -269,8 +281,8 @@ public class ControllerImpl implements Controller {
     chooseTheme.setValue("Light Theme");
     chooseTheme.setOnAction(e -> handleThemeChange(chooseTheme.getValue()));
 
-    changeBGTeam.getItems().addAll("None", "Huskies", "Leafs", "Stars", "Bruins", "Flyers");
-    changeBGTeam.setValue("Change BG Team");
+    changeBGTeam.getItems().addAll("Huskies", "Leafs", "Stars", "Bruins", "Flyers");
+    changeBGTeam.setValue("Change BG Color");
     changeBGTeam.setOnAction(e -> handleChangeBGTeam(changeBGTeam.getValue()));
 
     changeFont.getItems().addAll("Comic Sans MS", "Rockwell", "Eras Bold Itc", "Arial");
@@ -289,6 +301,9 @@ public class ControllerImpl implements Controller {
 
   }
 
+  /**
+   * Saves the file as a .bujo file
+   */
   void handleSave() {
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -327,6 +342,9 @@ public class ControllerImpl implements Controller {
     }
   }
 
+  /**
+   * Opens a .bujo file
+   */
   void handleOpenFile() {
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -353,6 +371,9 @@ public class ControllerImpl implements Controller {
     displayEvents();
   }
 
+  /**
+   * Creates a new task
+   */
   void handleNewTask() {
     TextInputDialog nameDialog = new TextInputDialog();
     nameDialog.setTitle("New Task");
@@ -409,33 +430,21 @@ public class ControllerImpl implements Controller {
     }
   }
 
+  /**
+   * Displays a task
+   */
   void displayTasks() {
     if (tasks.size() > 0) {
       tasksQueueView.getItems().add(tasks.get(tasks.size() - 1));
       Task t = bujoModel.getTasks().get(bujoModel.getTasks().size() - 1);
-      Text taskText = new Text(t.toString());
-
-        Hyperlink taskLink = new Hyperlink(t.getURL());
-        taskLink.setOnAction(event -> {
-          String url = taskLink.getText();
-          if (url != null) {
-            try {
-              java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
-            } catch (IOException e) {
-              throw new RuntimeException(e);
-            } catch (URISyntaxException e) {
-              throw new RuntimeException(e);
-            }
-          }
-        });
       switch (t.getDay().toLowerCase()) {
-        case "sunday" -> sundayTaskView.getItems().add(new HBox(taskText, taskLink));
-        case "monday" -> mondayTaskView.getItems().add(new HBox(taskText, taskLink));
-        case "tuesday" -> tuesdayTaskView.getItems().add(new HBox(taskText, taskLink));
-        case "wednesday" -> wednesdayTaskView.getItems().add(new HBox(taskText, taskLink));
-        case "thursday" -> thursdayTaskView.getItems().add(new HBox(taskText, taskLink));
-        case "friday" -> fridayTaskView.getItems().add(new HBox(taskText, taskLink));
-        case "saturday" -> saturdayTaskView.getItems().add(new HBox(taskText, taskLink));
+        case "sunday" -> sundayTaskView.getItems().add(t.toString());
+        case "monday" -> mondayTaskView.getItems().add(t.toString());
+        case "tuesday" -> tuesdayTaskView.getItems().add(t.toString());
+        case "wednesday" -> wednesdayTaskView.getItems().add(t.toString());
+        case "thursday" -> thursdayTaskView.getItems().add(t.toString());
+        case "friday" -> fridayTaskView.getItems().add(t.toString());
+        case "saturday" -> saturdayTaskView.getItems().add(t.toString());
         default -> {
           throw new IllegalArgumentException("Day entered is invalid");
         }
@@ -443,22 +452,12 @@ public class ControllerImpl implements Controller {
     }
   }
 
+  /**
+   * Displays the events
+   */
   void displayEvents() {
     if (bujoModel.getEvents().size() > 0) {
       Event e = bujoModel.getEvents().get(bujoModel.getEvents().size() - 1);
-      Hyperlink taskLink = new Hyperlink(e.getURL());
-      taskLink.setOnAction(event -> {
-        String url = e.getURL();
-        if (url != null) {
-          try {
-            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
-          } catch (IOException exc) {
-            throw new RuntimeException(exc);
-          } catch (URISyntaxException exc) {
-            throw new RuntimeException(exc);
-          }
-        }
-      });
       switch (e.getDay().toLowerCase()) {
         case "sunday" -> sundayEventView.getItems().add(e.toString());
         case "monday" -> mondayEventView.getItems().add(e.toString());
@@ -474,6 +473,9 @@ public class ControllerImpl implements Controller {
     }
   }
 
+  /**
+   * Creates a new event
+   */
   void handleNewEvent() {
     TextInputDialog nameDialog = new TextInputDialog();
     nameDialog.setTitle("New Event");
@@ -532,6 +534,9 @@ public class ControllerImpl implements Controller {
     }
   }
 
+  /**
+   * Handler for a settings button
+   */
   void handleSettings() {
     Dialog<ButtonType> dialog = new Dialog<>();
     dialog.setTitle("Settings");
@@ -569,33 +574,45 @@ public class ControllerImpl implements Controller {
     dialog.showAndWait();
   }
 
+  /**
+   * Sets the limit on the max number of events
+   *
+   * @param maxTasks max number of tasks
+   * @param maxEvents max number of events
+   */
   private void handleMaxTasksEvents(int maxTasks, int maxEvents) {
     bujoModel.setMaxTasksPerDay(maxTasks);
     bujoModel.setMaxEventsPerDay(maxEvents);
   }
 
+  /**
+   * Sets the limit on the max number of tasks
+   *
+   * @param maxTasks max number of tasks
+   * @param maxEvents max number of events
+   */
   private void saveMaxTasksEvents(int maxTasks, int maxEvents) {
     bujoModel.setMaxTasksPerDay(maxTasks);
     bujoModel.setMaxEventsPerDay(maxEvents);
   }
 
-  void initalizeAllText() {
-    allText.addAll(Arrays.asList(sundayLabel1, mondayLabel, tuesdayLabel,
-        wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel, tasksLabel,
-        quotesNotesLabel, statsLabel, weekStatsBox, task1,
-        task2, task3, task4, task5, task6, task7, event1,
-        event2, event3, event4, event5, event6, event7));
-  }
-
-
+  /**
+   * Theme changer
+   *
+   * @param theme theme
+   */
   void handleThemeChange(String theme) {
     this.theme = theme;
     Image neubg = new Image("neu.jpg");
     Image whitebg = new Image("whitebg.jpg");
     Image dbg = new Image("dbg.jpg");
 
-    initalizeAllText();
 
+    allText.addAll(Arrays.asList(sundayLabel1, mondayLabel, tuesdayLabel,
+        wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel, tasksLabel,
+        quotesNotesLabel, statsLabel, weekStatsBox, task1,
+        task2, task3, task4, task5, task6, task7, event1,
+        event2, event3, event4, event5, event6, event7));
     if (theme.equals("Light Theme")) {
       currentBG.setImage(whitebg);
       for (Label l : allText) {
@@ -631,13 +648,21 @@ public class ControllerImpl implements Controller {
     }
   }
 
-    public static void handleWarning(String message) {
+  /**
+   * Displays a warning message to the user
+   *
+   * @param message warning message
+   */
+  public static void handleWarning(String message) {
     Alert warningAlert = new Alert(Alert.AlertType.WARNING);
     warningAlert.setTitle("Warning");
     warningAlert.setContentText(message);
     warningAlert.showAndWait();
   }
 
+  /**
+   * Displays the metrics collected about the tasks and events
+   */
   void displayStats() {
     String stats;
     int numTasksCompleted = 0;
@@ -651,24 +676,23 @@ public class ControllerImpl implements Controller {
       percentage = (int) ((double) numTasksCompleted / (double) tasks.size() * 100);
     }
     stats = "Total number of tasks this week: " + tasks.size()
-    + "\nTotal number of events this week: " + events.size()
-    + "\nPercentage of tasks completed: " + percentage;
+        + "\nTotal number of events this week: " + events.size()
+        + "\nPercentage of tasks completed: " + percentage;
     weekStatsBox.setText(stats);
     weekStatsBox.setStyle("-fx-alignment: baseline-left;");
   }
 
-
-
+  /**
+   * Changes the BG color
+   *
+   * @param color color of the BG
+   */
   void handleChangeBGTeam(String color) {
     Image huskies = new Image("neubg.jpg");
     Image leafs = new Image("leafs.jpg");
     Image stars = new Image("stars.png");
     Image bruins = new Image("bruins.jpg");
     Image flyers = new Image("flyers.png");
-    Image whitebg = new Image("whitebg.jpg");
-
-
-    initalizeAllText();
 
 
     if (color.equals("Huskies")) {
@@ -690,27 +714,36 @@ public class ControllerImpl implements Controller {
       currentBG.setImage(flyers);
 
     }
-    else {
-      currentBG.setImage(whitebg);
-    }
   }
 
+  /**
+   * Changes the font in the app
+   *
+   * @param font font
+   */
   void handleChangeFont(String font) {
-    initalizeAllText();
     for (Label l: allText) {
       l.setFont(Font.font(font));
     }
   }
 
+  /**
+   * Changes the font color
+   *
+   * @param color font color
+   */
   void handleChangeFontColor(String color) {
-    initalizeAllText();
     for (Label l: allText) {
       l.setStyle("-fx-text-fill:" + color);
     }
   }
 
+  /**
+   * Changes whether the font should glow or not
+   *
+   * @param type glow/not glow
+   */
   void handleGlowMode(String type) {
-    initalizeAllText();
     Glow glow = new Glow();
     if (type.equals("Glow")) {
       for (Label l: allText) {
@@ -725,9 +758,13 @@ public class ControllerImpl implements Controller {
 
       }
     }
-
   }
 
+  /**
+   * Handles the click on a task in the queue
+   *
+   * @param task task to be clicked
+   */
   private void handleTaskClick(Task task) {
     Dialog<ButtonType> dialog = new Dialog<>();
     dialog.setTitle("Task Details");

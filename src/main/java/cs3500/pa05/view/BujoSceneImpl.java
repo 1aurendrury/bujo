@@ -14,6 +14,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * Represents a scene of a week
+ */
 public class BujoSceneImpl implements BujoView {
 
   // initalize the loader
@@ -167,8 +170,6 @@ public class BujoSceneImpl implements BujoView {
   @FXML
   private Label weekStatsBox;
 
-
-
   public BujoSceneImpl(ControllerImpl controller) {
     this.loader = new FXMLLoader();
     // light mode will be the standard setting, themes can be changed once bujo is opened
@@ -176,6 +177,11 @@ public class BujoSceneImpl implements BujoView {
     this.loader.setController(controller);
   }
 
+  /**
+   * Renders the scene
+   *
+   * @return scene view
+   */
   @Override
   public Scene load() {
     try {

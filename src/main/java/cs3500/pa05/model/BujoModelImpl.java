@@ -81,13 +81,13 @@ public class BujoModelImpl implements BujoModel {
    */
   public void createDays() {
     List<Day> days = new ArrayList<>();
-    Day sunday = new Day(new ArrayList<>(), new ArrayList<>(), 1, 1);
-    Day monday = new Day(new ArrayList<>(), new ArrayList<>(), 1, 1);
-    Day tuesday = new Day(new ArrayList<>(), new ArrayList<>(), 1, 1);
-    Day wednesday = new Day(new ArrayList<>(), new ArrayList<>(), 1, 1);
-    Day thursday = new Day(new ArrayList<>(), new ArrayList<>(), 1, 1);
-    Day friday = new Day(new ArrayList<>(), new ArrayList<>(), 1, 1);
-    Day saturday = new Day(new ArrayList<>(), new ArrayList<>(), 1, 1);
+    Day sunday = new Day(new ArrayList<>(), new ArrayList<>());
+    Day monday = new Day(new ArrayList<>(), new ArrayList<>());
+    Day tuesday = new Day(new ArrayList<>(), new ArrayList<>());
+    Day wednesday = new Day(new ArrayList<>(), new ArrayList<>());
+    Day thursday = new Day(new ArrayList<>(), new ArrayList<>());
+    Day friday = new Day(new ArrayList<>(), new ArrayList<>());
+    Day saturday = new Day(new ArrayList<>(), new ArrayList<>());
 
     days.add(sunday);
     days.add(monday);

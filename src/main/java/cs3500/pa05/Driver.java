@@ -11,10 +11,21 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ * Represents the driver class
+ */
 public class Driver extends Application {
 
   // class has to extend Application, will add this once everything is implemented
 
+  /**
+   * Starts the application
+   *
+   * @param stage the primary stage for this application, onto which
+   *              the application scene can be set.
+   *              Applications may create other stages, if needed, but they will not be
+   *              primary stages.
+   */
   public void start(Stage stage) {
     stage.setTitle("PA05 Bullet Journal");
 
@@ -38,10 +49,14 @@ public class Driver extends Application {
     catch (IllegalStateException e) {
       System.err.println("Unable to load bullet journal");
     }
- }
+  }
 
+  /**
+   * Entry point to the program
+   *
+   * @param args no args required
+   */
   public static void main(String[] args) {
     launch();
   }
 }
-

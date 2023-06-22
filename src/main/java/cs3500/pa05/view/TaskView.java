@@ -4,6 +4,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+/**
+ * Represents the task view
+ */
 public class TaskView extends VBox {
 
   public Label name;

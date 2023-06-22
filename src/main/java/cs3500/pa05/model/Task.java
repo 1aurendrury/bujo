@@ -2,6 +2,9 @@ package cs3500.pa05.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Represents a task
+ */
 public class Task {
   @JsonProperty("name")
   public String name;
@@ -25,10 +28,20 @@ public class Task {
     this.isComplete = isComplete;
   }
 
+  /**
+   * Returns the day of the task
+   *
+   * @return day of the task
+   */
   public String getDay() {
     return this.day;
   }
 
+  /**
+   * Converts the task to a string
+   *
+   * @return task representation
+   */
   public String toString() {
     String complete;
     if (isComplete) {
@@ -39,6 +52,11 @@ public class Task {
     return name + "\n" + desc + "\n" + complete;
   }
 
+  /**
+   * Returns the URL in the description of a task
+   *
+   * @return url of the task
+   */
   public String getURL() {
     int urlStart = desc.indexOf("http");
     int urlEnd = desc.indexOf(".") + 4;

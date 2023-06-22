@@ -4,6 +4,9 @@ import java.util.List;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+/**
+ * Represents the task queue
+ */
 public class TasksQueue extends VBox {
 
   public Label tasksQueueLabel;

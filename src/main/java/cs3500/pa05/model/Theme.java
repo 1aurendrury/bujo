@@ -4,6 +4,9 @@ import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
+/**
+ * Represents a theme
+ */
 public class Theme {
   String theme;
   Color fontColor;
