@@ -2,6 +2,7 @@ package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import cs3500.pa05.controller.ControllerImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,9 @@ class DayTest {
     assertEquals(1, day1.events.size());
     day1.addEvent(event2, 10);
     assertEquals(2, day1.events.size());
+
+    //day1.addEvent(event1, 0);
+    //assertEquals("Maximum number of events per day reached!", ControllerImpl.);
 
     assertEquals(0, day2.events.size());
     day2.addEvent(event3, 10);

@@ -8,6 +8,12 @@ import org.junit.jupiter.api.Test;
 class TaskTest {
   Task task1;
   Task task2;
+  Task task3;
+  Task task4;
+  Task task5;
+  String string1;
+  String string2;
+  String string3;
 
   @BeforeEach
   void setup() {
@@ -25,6 +31,21 @@ class TaskTest {
   void testToString() {
     assertEquals("task1\ndesc\nNot complete", task1.toString());
     assertEquals("task2\ndesc\nComplete", task2.toString());
+  }
+
+  @Test
+  void testGetURL() {
+    string1 = "this is a message that https://google.com contains a link.";
+    task3 = new Task("task", string1, "monday", false);
+    assertEquals("https://google.com", task3.getURL());
+
+    string2 = "this is a message without a url";
+    task4 = new Task("task", string2, "monday", false);
+    assertNull(task4.getURL());
+
+    string3 = "this is a message that http://google.com contains a link.";
+    task5 = new Task("task", string3, "monday", false);
+    assertEquals("http://google.com", task5.getURL());
   }
 
 }

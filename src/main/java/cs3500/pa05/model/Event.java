@@ -37,4 +37,16 @@ public class Event {
     return name + " (" + startTime + ":00 – " + endHour
         + ":" + String.format("%02d" , endMinute) + ")" + "\n" + desc + "\n";
   }
+
+  public String getURL() {
+    int urlStart = desc.indexOf("http");
+    int urlEnd = desc.indexOf(".") + 4;
+    String url;
+    if (desc.contains("https://") || desc.contains("http://")) {
+      url = desc.substring(urlStart, urlEnd);
+    } else {
+      url = null;
+    }
+    return url;
+  }
 }

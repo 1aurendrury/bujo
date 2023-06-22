@@ -9,6 +9,7 @@ import cs3500.pa05.model.Task;
 import cs3500.pa05.view.BujoSceneImpl;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -37,7 +39,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -409,14 +413,29 @@ public class ControllerImpl implements Controller {
     if (tasks.size() > 0) {
       tasksQueueView.getItems().add(tasks.get(tasks.size() - 1));
       Task t = bujoModel.getTasks().get(bujoModel.getTasks().size() - 1);
+      Text taskText = new Text(t.toString());
+
+        Hyperlink taskLink = new Hyperlink(t.getURL());
+        taskLink.setOnAction(event -> {
+          String url = taskLink.getText();
+          if (url != null) {
+            try {
+              java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
+            } catch (IOException e) {
+              throw new RuntimeException(e);
+            } catch (URISyntaxException e) {
+              throw new RuntimeException(e);
+            }
+          }
+        });
       switch (t.getDay().toLowerCase()) {
-        case "sunday" -> sundayTaskView.getItems().add(t.toString());
-        case "monday" -> mondayTaskView.getItems().add(t.toString());
-        case "tuesday" -> tuesdayTaskView.getItems().add(t.toString());
-        case "wednesday" -> wednesdayTaskView.getItems().add(t.toString());
-        case "thursday" -> thursdayTaskView.getItems().add(t.toString());
-        case "friday" -> fridayTaskView.getItems().add(t.toString());
-        case "saturday" -> saturdayTaskView.getItems().add(t.toString());
+        case "sunday" -> sundayTaskView.getItems().add(new HBox(taskText, taskLink));
+        case "monday" -> mondayTaskView.getItems().add(new HBox(taskText, taskLink));
+        case "tuesday" -> tuesdayTaskView.getItems().add(new HBox(taskText, taskLink));
+        case "wednesday" -> wednesdayTaskView.getItems().add(new HBox(taskText, taskLink));
+        case "thursday" -> thursdayTaskView.getItems().add(new HBox(taskText, taskLink));
+        case "friday" -> fridayTaskView.getItems().add(new HBox(taskText, taskLink));
+        case "saturday" -> saturdayTaskView.getItems().add(new HBox(taskText, taskLink));
         default -> {
           throw new IllegalArgumentException("Day entered is invalid");
         }
@@ -427,6 +446,19 @@ public class ControllerImpl implements Controller {
   void displayEvents() {
     if (bujoModel.getEvents().size() > 0) {
       Event e = bujoModel.getEvents().get(bujoModel.getEvents().size() - 1);
+      Hyperlink taskLink = new Hyperlink(e.getURL());
+      taskLink.setOnAction(event -> {
+        String url = e.getURL();
+        if (url != null) {
+          try {
+            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
+          } catch (IOException exc) {
+            throw new RuntimeException(exc);
+          } catch (URISyntaxException exc) {
+            throw new RuntimeException(exc);
+          }
+        }
+      });
       switch (e.getDay().toLowerCase()) {
         case "sunday" -> sundayEventView.getItems().add(e.toString());
         case "monday" -> mondayEventView.getItems().add(e.toString());
@@ -700,5 +732,4 @@ public class ControllerImpl implements Controller {
     dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
     dialog.showAndWait();
   }
-
 }

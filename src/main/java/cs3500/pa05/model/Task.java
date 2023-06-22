@@ -38,4 +38,16 @@ public class Task {
     }
     return name + "\n" + desc + "\n" + complete;
   }
+
+  public String getURL() {
+    int urlStart = desc.indexOf("http");
+    int urlEnd = desc.indexOf(".") + 4;
+    String url;
+    if (desc.contains("https://") || desc.contains("http://")) {
+      url = desc.substring(urlStart, urlEnd);
+    } else {
+      url = null;
+    }
+    return url;
+  }
 }
