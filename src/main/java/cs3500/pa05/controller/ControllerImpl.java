@@ -224,7 +224,7 @@ public class ControllerImpl implements Controller {
   @FXML
   private ChoiceBox<String> glowMode;
   @FXML
-  private ChoiceBox<String> changeBgTeam = new ChoiceBox<>();
+  private ChoiceBox<String> changeBgTeam;
   @FXML
   private ChoiceBox<String> changeFontColor;
 

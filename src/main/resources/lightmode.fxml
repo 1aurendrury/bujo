@@ -282,7 +282,7 @@
                <Insets />
             </opaqueInsets>
          </ChoiceBox>
-         <ChoiceBox fx:id="changeBGTeam" accessibleText="Theme" layoutX="230.0" layoutY="12.0" prefHeight="25.0" prefWidth="105.0">
+         <ChoiceBox fx:id="changeBgTeam" accessibleText="Theme" layoutX="230.0" layoutY="12.0" prefHeight="25.0" prefWidth="105.0">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
