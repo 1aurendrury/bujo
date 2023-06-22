@@ -29,6 +29,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -188,6 +189,37 @@ public class ControllerImpl implements Controller {
 
   @FXML
   private ArrayList<Label> allText;
+
+  @FXML
+  private Label task1;
+  @FXML
+  private Label task2;
+  @FXML
+  private Label task3;
+  @FXML
+  private Label task4;
+  @FXML
+  private Label task5;
+  @FXML
+  private Label task6;
+  @FXML
+  private Label task7;
+  @FXML
+  private Label event1;
+  @FXML
+  private Label event2;
+  @FXML
+  private Label event3;
+  @FXML
+  private Label event4;
+  @FXML
+  private Label event5;
+  @FXML
+  private Label event6;
+  @FXML
+  private Label event7;
+
+
 
   public ControllerImpl(Stage stage, List<Task> taskQueue, BujoFile bujoFile, String path,
                         BujoModelImpl bujoModel) {
@@ -482,40 +514,53 @@ public class ControllerImpl implements Controller {
 
   void handleThemeChange(String theme) {
     this.theme = theme;
+    Image neubg = new Image("neu.jpg");
+    Image whitebg = new Image("whitebg.jpg");
+    Image dbg = new Image("dbg.jpg");
+
+
     allText.addAll(Arrays.asList(sundayLabel1, mondayLabel, tuesdayLabel,
         wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel, tasksLabel,
-        quotesNotesLabel, statsLabel, weekStatsBox));
+        quotesNotesLabel, statsLabel, weekStatsBox, task1,
+        task2, task3, task4, task5, task6, task7, event1,
+        event2, event3, event4, event5, event6, event7));
     if (theme.equals("Light Theme")) {
-      currentBG = new ImageView("/src/main/resources/whitebg.jpg");
-      for (Label l: allText) {
+      currentBG.setImage(whitebg);
+      for (Label l : allText) {
         l.setFont(Font.font("Rockwell"));
       }
-      for (Label l: allText) {
+      for (Label l : allText) {
         l.setStyle("-fx-text-fill: black");
       }
+      quoteBox.setStyle("-fx-text-fill: black");
+      quoteBox.setFont(Font.font("Rockwell"));
     }
     else if (theme.equals("Dark Theme")) {
-      currentBG = new ImageView("/src/main/resources/dbg.jpg");
-      for (Label l: allText) {
+      currentBG.setImage(dbg);
+      for (Label l : allText) {
         l.setStyle("-fx-text-fill: white");
       }
-      for (Label l: allText) {
+      for (Label l : allText) {
         l.setFont(Font.font("Arial"));
       }
+      quoteBox.setStyle("-fx-text-fill: white");
+      quoteBox.setFont(Font.font("Arial"));
     }
     else {
-      currentBG = new ImageView("/src/main/resources/neubg.jpg");
-      for (Label l: allText) {
+      currentBG.setImage(neubg);
+      for (Label l : allText) {
         l.setStyle("-fx-text-fill: red");
       }
-      for (Label l: allText) {
+      for (Label l : allText) {
         l.setFont(Font.font("Eras Bold Itc"));
       }
+      quoteBox.setStyle("-fx-text-fill: red");
+      quoteBox.setFont(Font.font("Eras Bold Itc"));
     }
     handleSave();
   }
 
-  public static void handleWarning(String message) {
+    public static void handleWarning(String message) {
     Alert warningAlert = new Alert(Alert.AlertType.WARNING);
     warningAlert.setTitle("Warning");
     warningAlert.setContentText(message);

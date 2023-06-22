@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
@@ -7,14 +8,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <Scene fx:id="lightMode" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane fx:id="entireScreen" prefHeight="856.0" prefWidth="1404.0">
+   <AnchorPane fx:id="entireScreen" prefHeight="856.0" prefWidth="1404.0">
       <children>
+         <ImageView fx:id="currentBG" fitHeight="908.0" fitWidth="1449.0">
+            <image>
+               <Image url="@whitebg.jpg" />
+            </image>
+         </ImageView>
          <VBox fx:id="sundayBox" layoutX="7.0" layoutY="35.0" prefHeight="715.0" prefWidth="173.0">
             <children>
                <Label fx:id="sundayLabel1" alignment="CENTER" prefHeight="45.0" prefWidth="172.0" text="Sunday">
@@ -24,7 +33,7 @@
                </Label>
                <AnchorPane fx:id="sundayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
+                     <Label fx:id="task1" layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -34,7 +43,7 @@
                </AnchorPane>
                <AnchorPane fx:id="sundayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
+                     <Label fx:id="event1" layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -53,7 +62,7 @@
                </Label>
                <AnchorPane fx:id="mondayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
+                     <Label fx:id="task2" layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -63,7 +72,7 @@
                </AnchorPane>
                <AnchorPane fx:id="mondayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
+                     <Label fx:id="event2" layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -82,7 +91,7 @@
                </Label>
                <AnchorPane fx:id="tuesdayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
+                     <Label fx:id="task3" layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -92,7 +101,7 @@
                </AnchorPane>
                <AnchorPane fx:id="tuesdayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
+                     <Label fx:id="event3" layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -111,7 +120,7 @@
                </Label>
                <AnchorPane fx:id="wednesdayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
+                     <Label fx:id="task4" layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -121,7 +130,7 @@
                </AnchorPane>
                <AnchorPane fx:id="wednesdayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
+                     <Label fx:id="event4" layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -140,7 +149,7 @@
                </Label>
                <AnchorPane fx:id="thursdayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
+                     <Label fx:id="task5" layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -150,7 +159,7 @@
                </AnchorPane>
                <AnchorPane fx:id="thursdayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
+                     <Label fx:id="event5" layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -169,7 +178,7 @@
                </Label>
                <AnchorPane fx:id="fridayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
+                     <Label fx:id="task6" layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -179,7 +188,7 @@
                </AnchorPane>
                <AnchorPane fx:id="fridayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
+                     <Label fx:id="event6" layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -198,7 +207,7 @@
                </Label>
                <AnchorPane fx:id="saturdayTasks" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
+                     <Label fx:id="task7" layoutX="7.0" prefHeight="32.0" prefWidth="55.0" text="Tasks">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -208,7 +217,7 @@
                </AnchorPane>
                <AnchorPane fx:id="saturdayEvents" prefHeight="301.0" prefWidth="173.0">
                   <children>
-                     <Label layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
+                     <Label fx:id="event7" layoutX="7.0" prefHeight="32.0" prefWidth="63.0" text="Events">
                         <font>
                            <Font name="Rockwell" size="18.0" />
                         </font>
@@ -255,14 +264,14 @@
          </HBox>
          <HBox fx:id="statsBox" layoutX="757.0" layoutY="734.0" prefHeight="129.0" prefWidth="649.0">
             <children>
-               <Label fx:id="statsLabel" prefHeight="41.0" prefWidth="136.0" text="Weekly Statistics:">
+               <Label fx:id="statsLabel" prefHeight="41.0" prefWidth="225.0" text="Weekly Statistics:">
                   <font>
                      <Font size="17.0" />
                   </font>
                </Label>
                <AnchorPane fx:id="statsAP" prefHeight="129.0" prefWidth="485.0">
                   <children>
-                     <Label fx:id="weekStatsBox" layoutX="-130.0" layoutY="20.0" prefHeight="110.0" prefWidth="482.0" />
+                     <Label fx:id="weekStatsBox" layoutX="39.0" prefHeight="128.0" prefWidth="482.0" text="Stats go here:" />
                   </children>
                </AnchorPane>
             </children>
