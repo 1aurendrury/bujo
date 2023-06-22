@@ -55,7 +55,7 @@ class EventTest {
 
     String string2 = "this is a message without a url";
     Event event2 = new Event("event", string2, "monday", 1, 1);
-    assertNull(event2.getUrl());
+    assertEquals("", event2.getUrl());
 
     String string3 = "this is a message that http://google.com contains a link.";
     Event event3 = new Event("event", string3, "monday", 1, 1);

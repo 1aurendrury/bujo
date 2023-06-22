@@ -42,7 +42,7 @@ class TaskTest {
 
     string2 = "this is a message without a url";
     task4 = new Task("task", string2, "monday", false);
-    assertNull(task4.getUrl());
+    assertEquals("", task4.getUrl());
 
     string3 = "this is a message that http://google.com contains a link.";
     task5 = new Task("task", string3, "monday", false);
