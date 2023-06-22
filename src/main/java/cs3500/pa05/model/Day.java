@@ -44,7 +44,8 @@ public class Day {
    */
   public void addEvent(Event event, int maxEvents) {
     if (this.events.size() >= maxEvents) {
-      ControllerImpl.handleWarning("Maximum number of events per day reached!");
+      ControllerImpl.handleWarning("Maximum number of events per day reached!\n"
+          + "Add events with caution!");
     } else {
       events.add(event);
     }
@@ -58,7 +59,8 @@ public class Day {
    */
   public void addTasks(Task task, int maxTasks) {
     if (this.tasks.size() >= maxTasks) {
-      ControllerImpl.handleWarning("Maximum number of tasks per day reached!");
+      ControllerImpl.handleWarning("Maximum number of tasks per day reached!\n"
+          + "Add tasks with caution!");
     } else {
       tasks.add(task);
     }
