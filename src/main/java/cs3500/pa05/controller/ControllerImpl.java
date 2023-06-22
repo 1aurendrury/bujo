@@ -22,6 +22,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -394,6 +395,11 @@ public class ControllerImpl implements Controller {
           bujoModel.addTask(newTask, day);
           displayTasks();
           displayStats();
+
+          ListCell<String> taskCell = new ListCell<>();
+          taskCell.setText(name);
+          taskCell.setOnMouseClicked(event -> handleTaskClick(newTask));
+          tasksQueueView.getItems().add(taskCell);
         }
       }
     }
@@ -586,7 +592,6 @@ public class ControllerImpl implements Controller {
       quoteBox.setStyle("-fx-text-fill: red");
       quoteBox.setFont(Font.font("Eras Bold Itc"));
     }
-    handleSave();
   }
 
     public static void handleWarning(String message) {
@@ -644,7 +649,6 @@ public class ControllerImpl implements Controller {
       currentBG.setImage(flyers);
 
     }
-
   }
 
   void handleChangeFont(String font) {
@@ -677,5 +681,24 @@ public class ControllerImpl implements Controller {
 
   }
 
+  private void handleTaskClick(Task task) {
+    Dialog<ButtonType> dialog = new Dialog<>();
+    dialog.setTitle("Task Details");
+    dialog.setHeaderText("Task Information");
+
+    VBox content = new VBox();
+    content.setSpacing(10);
+
+    Label nameLabel = new Label("Name: " + task.name);
+    Label descriptionLabel = new Label("Description: " + task.desc);
+    Label dayLabel = new Label("Day: " + task.getDay());
+    Label statusLabel = new Label("Status: " + (task.isComplete ? "Complete" : "Incomplete"));
+
+    content.getChildren().addAll(nameLabel, descriptionLabel, dayLabel, statusLabel);
+    dialog.getDialogPane().setContent(content);
+
+    dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+    dialog.showAndWait();
+  }
 
 }
