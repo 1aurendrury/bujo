@@ -51,15 +51,15 @@ class DayTest {
   @Test
   void testAddTasks() {
     assertEquals(0, day1.tasks.size());
-    day1.addTasks(task1);
+    day1.addTasks(task1, 10);
     assertEquals(1, day1.tasks.size());
-    day1.addTasks(task2);
+    day1.addTasks(task2, 10);
     assertEquals(2, day1.tasks.size());
 
     assertEquals(0, day2.tasks.size());
-    day2.addTasks(task3);
+    day2.addTasks(task3, 10);
     assertEquals(1, day2.tasks.size());
-    day2.addTasks(task4);
+    day2.addTasks(task4, 10);
     assertEquals(2, day2.tasks.size());
   }
 }
