@@ -38,15 +38,15 @@ class TaskTest {
   void testGetUrl() {
     string1 = "this is a message that https://google.com contains a link.";
     task3 = new Task("task", string1, "monday", false);
-    assertEquals("https://google.com", task3.getURL());
+    assertEquals("https://google.com", task3.getUrl());
 
     string2 = "this is a message without a url";
     task4 = new Task("task", string2, "monday", false);
-    assertNull(task4.getURL());
+    assertNull(task4.getUrl());
 
     string3 = "this is a message that http://google.com contains a link.";
     task5 = new Task("task", string3, "monday", false);
-    assertEquals("http://google.com", task5.getURL());
+    assertEquals("http://google.com", task5.getUrl());
   }
 
 }

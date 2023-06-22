@@ -166,10 +166,15 @@ public class BujoSceneImpl implements BujoView {
   @FXML
   private Label statsLabel;
   @FXML
-  private AnchorPane statsAP;
+  private AnchorPane statsAp;
   @FXML
   private Label weekStatsBox;
 
+  /**
+   * Constructor for the scene implementation
+   *
+   * @param controller controller implementation
+   */
   public BujoSceneImpl(ControllerImpl controller) {
     this.loader = new FXMLLoader();
     // light mode will be the standard setting, themes can be changed once bujo is opened
@@ -186,8 +191,7 @@ public class BujoSceneImpl implements BujoView {
   public Scene load() {
     try {
       return this.loader.load();
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       throw new IllegalStateException("Unable to load bullet journal");
     }
   }

@@ -3,10 +3,8 @@ package cs3500.pa05.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa05.model.BujoFile;
 import cs3500.pa05.model.BujoModelImpl;
-import cs3500.pa05.model.Day;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
-import cs3500.pa05.view.BujoSceneImpl;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,9 +22,6 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -176,7 +171,7 @@ public class ControllerImpl implements Controller {
   @FXML
   private Label statsLabel;
   @FXML
-  private AnchorPane statsAP;
+  private AnchorPane statsAp;
   @FXML
   private Label weekStatsBox;
   @FXML
@@ -190,7 +185,7 @@ public class ControllerImpl implements Controller {
   private String filePath;
 
   @FXML
-  private ImageView currentBG;
+  private ImageView currentBg;
 
   @FXML
   private ArrayList<Label> allText;
@@ -229,7 +224,7 @@ public class ControllerImpl implements Controller {
   @FXML
   private ChoiceBox<String> glowMode;
   @FXML
-  private ChoiceBox<String> changeBGTeam;
+  private ChoiceBox<String> changeBgTeam;
   @FXML
   private ChoiceBox<String> changeFontColor;
 
@@ -281,9 +276,9 @@ public class ControllerImpl implements Controller {
     chooseTheme.setValue("Light Theme");
     chooseTheme.setOnAction(e -> handleThemeChange(chooseTheme.getValue()));
 
-    changeBGTeam.getItems().addAll("Huskies", "Leafs", "Stars", "Bruins", "Flyers");
-    changeBGTeam.setValue("Change BG Color");
-    changeBGTeam.setOnAction(e -> handleChangeBGTeam(changeBGTeam.getValue()));
+    changeBgTeam.getItems().addAll("Huskies", "Leafs", "Stars", "Bruins", "Flyers");
+    changeBgTeam.setValue("Change BG Color");
+    changeBgTeam.setOnAction(e -> handleChangeBgTeam(changeBgTeam.getValue()));
 
     changeFont.getItems().addAll("Comic Sans MS", "Rockwell", "Eras Bold Itc", "Arial");
     changeFont.setValue("Rockwell");
@@ -400,8 +395,6 @@ public class ControllerImpl implements Controller {
         Optional<String> dayResult = dayDialog.showAndWait();
 
         if (dayResult.isPresent()) {
-          String day = dayResult.get();
-
           Alert completeAlert = new Alert(Alert.AlertType.CONFIRMATION);
           completeAlert.setTitle("New Task");
           completeAlert.setHeaderText("Is the task complete?");
@@ -413,6 +406,8 @@ public class ControllerImpl implements Controller {
 
           boolean isComplete = completeResult.isPresent()
               && completeResult.get() == completeButton;
+
+          String day = dayResult.get();
 
           Task newTask = new Task(name, desc, day, isComplete);
 
@@ -614,7 +609,7 @@ public class ControllerImpl implements Controller {
         task2, task3, task4, task5, task6, task7, event1,
         event2, event3, event4, event5, event6, event7));
     if (theme.equals("Light Theme")) {
-      currentBG.setImage(whitebg);
+      currentBg.setImage(whitebg);
       for (Label l : allText) {
         l.setFont(Font.font("Rockwell"));
       }
@@ -623,9 +618,8 @@ public class ControllerImpl implements Controller {
       }
       quoteBox.setStyle("-fx-text-fill: black");
       quoteBox.setFont(Font.font("Rockwell"));
-    }
-    else if (theme.equals("Dark Theme")) {
-      currentBG.setImage(dbg);
+    } else if (theme.equals("Dark Theme")) {
+      currentBg.setImage(dbg);
       for (Label l : allText) {
         l.setStyle("-fx-text-fill: white");
       }
@@ -634,15 +628,15 @@ public class ControllerImpl implements Controller {
       }
       quoteBox.setStyle("-fx-text-fill: white");
       quoteBox.setFont(Font.font("Arial"));
-    }
-    else {
-      currentBG.setImage(neubg);
+    } else {
+      currentBg.setImage(neubg);
       for (Label l : allText) {
         l.setStyle("-fx-text-fill: red");
       }
       for (Label l : allText) {
         l.setFont(Font.font("Eras Bold Itc"));
       }
+
       quoteBox.setStyle("-fx-text-fill: red");
       quoteBox.setFont(Font.font("Eras Bold Itc"));
     }
@@ -687,32 +681,26 @@ public class ControllerImpl implements Controller {
    *
    * @param color color of the BG
    */
-  void handleChangeBGTeam(String color) {
+  void handleChangeBgTeam(String color) {
     Image huskies = new Image("neubg.jpg");
     Image leafs = new Image("leafs.jpg");
     Image stars = new Image("stars.png");
     Image bruins = new Image("bruins.jpg");
     Image flyers = new Image("flyers.png");
 
-
     if (color.equals("Huskies")) {
-      currentBG.setImage(huskies);
-    }
-    else if (color.equals("Leafs")) {
-      currentBG.setImage(leafs);
+      currentBg.setImage(huskies);
+    } else if (color.equals("Leafs")) {
+      currentBg.setImage(leafs);
 
-    }
-    else if (color.equals("Stars")) {
-      currentBG.setImage(stars);
+    } else if (color.equals("Stars")) {
+      currentBg.setImage(stars);
 
-    }
-    else if (color.equals("Bruins")) {
-      currentBG.setImage(bruins);
+    } else if (color.equals("Bruins")) {
+      currentBg.setImage(bruins);
 
-    }
-    else if (color.equals("Flyers")) {
-      currentBG.setImage(flyers);
-
+    } else if (color.equals("Flyers")) {
+      currentBg.setImage(flyers);
     }
   }
 
@@ -722,7 +710,7 @@ public class ControllerImpl implements Controller {
    * @param font font
    */
   void handleChangeFont(String font) {
-    for (Label l: allText) {
+    for (Label l : allText) {
       l.setFont(Font.font(font));
     }
   }
@@ -733,7 +721,7 @@ public class ControllerImpl implements Controller {
    * @param color font color
    */
   void handleChangeFontColor(String color) {
-    for (Label l: allText) {
+    for (Label l : allText) {
       l.setStyle("-fx-text-fill:" + color);
     }
   }
@@ -746,13 +734,12 @@ public class ControllerImpl implements Controller {
   void handleGlowMode(String type) {
     Glow glow = new Glow();
     if (type.equals("Glow")) {
-      for (Label l: allText) {
+      for (Label l : allText) {
         glow.setLevel(100);
         l.setEffect(glow);
       }
-    }
-    else {
-      for (Label l: allText) {
+    } else {
+      for (Label l : allText) {
         glow.setLevel(0);
         l.setEffect(glow);
 

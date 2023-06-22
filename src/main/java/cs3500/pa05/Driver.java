@@ -45,8 +45,7 @@ public class Driver extends Application {
       controller.run();
 
       stage.show();
-    }
-    catch (IllegalStateException e) {
+    } catch (IllegalStateException e) {
       System.err.println("Unable to load bullet journal");
     }
   }

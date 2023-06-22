@@ -21,7 +21,7 @@ public class Day {
    * @param events events in a day
    * @param tasks tasks in a day
    */
-  public Day (
+  public Day(
       @JsonProperty("events") List<Event> events,
       @JsonProperty("tasks") List<Task> tasks) {
     this.events = events;

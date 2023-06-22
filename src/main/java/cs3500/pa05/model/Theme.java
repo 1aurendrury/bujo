@@ -13,6 +13,14 @@ public class Theme {
   String fontType;
   List<Image> icons;
 
+  /**
+   * Constructor for a theme
+   *
+   * @param theme theme name
+   * @param fontColor font color
+   * @param fontType font type
+   * @param icons icons
+   */
   public Theme(String theme, Color fontColor, String fontType, List<Image> icons) {
     this.theme = theme;
     this.fontColor = fontColor;

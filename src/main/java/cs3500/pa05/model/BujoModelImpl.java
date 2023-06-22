@@ -15,6 +15,9 @@ public class BujoModelImpl implements BujoModel {
   public int maxTasksPerDay;
 
 
+  /**
+   * Constructor for the model implementation
+   */
   public BujoModelImpl() {
     this.days = new ArrayList<>();
     this.allEvents = new ArrayList<>();
@@ -27,6 +30,7 @@ public class BujoModelImpl implements BujoModel {
 
   /**
    * Changes the theme of a BujoModel
+   *
    * @param theme the new theme for this BujoModel, as a Theme datatype
    */
   @Override
@@ -36,6 +40,7 @@ public class BujoModelImpl implements BujoModel {
 
   /**
    * Adds a task to this BujoModel's list of tasks
+   *
    * @param task the task to be added to this BujoModel, as a Task
    */
   @Override
@@ -57,6 +62,7 @@ public class BujoModelImpl implements BujoModel {
 
   /**
    * Adds an event to this BujoModel's list of events
+   *
    * @param event the event to be added to this BujoModel, as an event
    */
   @Override
@@ -102,6 +108,7 @@ public class BujoModelImpl implements BujoModel {
 
   /**
    * Provides the tasks from a BujoModelImpl
+   *
    * @return the list of tasks attatched to this BujoModelImpl
    */
   public List<Task> getTasks() {
@@ -110,6 +117,7 @@ public class BujoModelImpl implements BujoModel {
 
   /**
    * Provides the events from a BujoModelImpl
+   *
    * @return the list of events attatched to this BujoModelImpl
    */
   public List<Event> getEvents() {

@@ -18,6 +18,14 @@ public class Task {
   @JsonProperty("is-complete")
   public boolean isComplete;
 
+  /**
+   * Task constructor
+   *
+   * @param name name of the task
+   * @param desc description of the tast
+   * @param day day of the task
+   * @param isComplete complete?
+   */
   public Task(@JsonProperty("name") String name,
               @JsonProperty("desc") String desc,
               @JsonProperty("day") String day,
@@ -57,7 +65,7 @@ public class Task {
    *
    * @return url of the task
    */
-  public String getURL() {
+  public String getUrl() {
     int urlStart = desc.indexOf("http");
     int urlEnd = desc.indexOf(".") + 4;
     String url;

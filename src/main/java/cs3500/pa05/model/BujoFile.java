@@ -24,6 +24,7 @@ public class BujoFile {
 
   /**
    * Represents an instance of a BujoFile with max tasks and events initialized to 0
+   *
    * @param theme the theme of the file as a string
    * @param name the name of the file as a string
    * @param days the days in this file
@@ -41,6 +42,7 @@ public class BujoFile {
 
   /**
    * Changes the max tasks of the Bujo file to the supplied int
+   *
    * @param maxTasks the new number of maximum tasks that will be allowed in the file, as an int
    */
   public void setMaxTasks(int maxTasks) {
@@ -49,6 +51,7 @@ public class BujoFile {
 
   /**
    * Changes the max events of the Bujo file to the supplied int
+   *
    * @param maxEvents the new number of maximum tasks that will be allowed in the file, as an int
    */
   public void setMaxEvents(int maxEvents) {
@@ -57,6 +60,7 @@ public class BujoFile {
 
   /**
    * Applies the supplied string to this Bujo file
+   *
    * @param theme the new theme of this Bujo file, as a string
    */
   public void setTheme(String theme) {

@@ -44,22 +44,22 @@ class EventTest {
   @Test
   void testToString() {
     Event event = new Event("event", "desc", "Monday", 1, 1);
-    assertEquals("event (1:00 – 2:00)\ndesc\n", event.toString());
+    assertEquals("event (1:00 - 2:00)\ndesc\n", event.toString());
   }
 
   @Test
   void testGetUrl() {
     String string1 = "this is a message that https://google.com contains a link.";
     Event event1 = new Event("event", string1, "monday", 1, 1);
-    assertEquals("https://google.com", event1.getURL());
+    assertEquals("https://google.com", event1.getUrl());
 
     String string2 = "this is a message without a url";
     Event event2 = new Event("event", string2, "monday", 1, 1);
-    assertNull(event2.getURL());
+    assertNull(event2.getUrl());
 
     String string3 = "this is a message that http://google.com contains a link.";
     Event event3 = new Event("event", string3, "monday", 1, 1);
-    assertEquals("http://google.com", event3.getURL());
+    assertEquals("http://google.com", event3.getUrl());
   }
 
 }

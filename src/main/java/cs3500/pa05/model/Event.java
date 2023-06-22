@@ -13,6 +13,15 @@ public class Event {
   public int startTime; //between 1 and 24
   public double duration;
 
+  /**
+   * Constructor for the event
+   *
+   * @param name name of the event
+   * @param desc description of the event
+   * @param day day of the event
+   * @param startTime start time of the event (hours)
+   * @param duration duration of the event (hours)
+   */
   @JsonCreator
   public Event(@JsonProperty("name") String name,
                @JsonProperty("desc") String desc,
@@ -48,7 +57,7 @@ public class Event {
     int endHour = startTime + (int) duration;
     int endMinute = (int) (duration % 1 * 60);
     return name + " (" + startTime + ":00 - " + endHour
-        + ":" + String.format("%02d" , endMinute) + ")" + "\n" + desc + "\n";
+        + ":" + String.format("%02d", endMinute) + ")" + "\n" + desc + "\n";
   }
 
   /**
@@ -56,7 +65,7 @@ public class Event {
    *
    * @return url of the event
    */
-  public String getURL() {
+  public String getUrl() {
     int urlStart = desc.indexOf("http");
     int urlEnd = desc.indexOf(".") + 4;
     String url;
