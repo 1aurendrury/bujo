@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import cs3500.pa05.controller.ControllerImpl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +12,6 @@ public class Day {
   @JsonProperty("tasks")
   public List<Task> tasks;
 
-  @JsonProperty("max-events")
-  public int maxEvents;
-
-  @JsonProperty("max-tasks")
-  public int maxTasks;
-
   public Day (
       @JsonProperty("events") List<Event> events,
       @JsonProperty("tasks") List<Task> tasks,
@@ -24,23 +19,27 @@ public class Day {
       @JsonProperty("max-tasks") int maxTasks) {
     this.events = events;
     this.tasks = tasks;
-    this.maxEvents = maxEvents;
-    this.maxTasks = maxTasks;
   }
 
   //constructor used in testing
   public Day() {
     this.events = new ArrayList<>();
     this.tasks = new ArrayList<>();
-    this.maxEvents = 0;
-    this.maxTasks = 0;
   }
 
-  public void addEvent(Event event) {
-    events.add(event);
+  public void addEvent(Event event, int maxEvents) {
+    if (this.events.size() >= maxEvents) {
+      ControllerImpl.handleWarning("Maximum number of events per day reached!");
+    } else {
+      events.add(event);
+    }
   }
 
-  public void addTasks(Task task) {
-    tasks.add(task);
+  public void addTasks(Task task, int maxTasks) {
+    if (this.tasks.size() >= maxTasks) {
+      ControllerImpl.handleWarning("Maximum number of tasks per day reached!");
+    } else {
+      tasks.add(task);
+    }
   }
 }

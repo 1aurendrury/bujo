@@ -453,21 +453,26 @@ public class ControllerImpl implements Controller {
 
       TextInputDialog maxTasksDialog = new TextInputDialog();
       maxTasksDialog.setTitle("Settings");
-      maxTasksDialog.setHeaderText("Set maximum number of tasks per day:" );
+      maxTasksDialog.setHeaderText("Set maximum number of tasks per day:");
       maxTasksDialog.setContentText("Maximum Tasks: ");
       Optional<String> maxTasksResult = maxTasksDialog.showAndWait();
 
       if (maxTasksResult.isPresent()) {
         int maxTasks = Integer.parseInt(maxTasksResult.get());
         handleMaxTasksEvents(maxTasks, maxEvents);
+        saveMaxTasksEvents(maxTasks, maxEvents);
       }
     }
   }
 
-  void handleMaxTasksEvents(int maxTasks, int maxEvents) {
-    bujoFile.setMaxEvents(maxEvents);
-    bujoFile.setMaxTasks(maxTasks);
-    handleSave();
+  private void handleMaxTasksEvents(int maxTasks, int maxEvents) {
+    bujoModel.setMaxTasksPerDay(maxTasks);
+    bujoModel.setMaxEventsPerDay(maxEvents);
+  }
+
+  private void saveMaxTasksEvents(int maxTasks, int maxEvents) {
+    bujoModel.setMaxTasksPerDay(maxTasks);
+    bujoModel.setMaxEventsPerDay(maxEvents);
   }
 
   void handleThemeChange(String theme) {
@@ -505,7 +510,7 @@ public class ControllerImpl implements Controller {
     handleSave();
   }
 
-  void handleWarning(String message) {
+  public static void handleWarning(String message) {
     Alert warningAlert = new Alert(Alert.AlertType.WARNING);
     warningAlert.setTitle("Warning");
     warningAlert.setContentText(message);

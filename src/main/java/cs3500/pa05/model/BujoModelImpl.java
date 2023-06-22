@@ -11,6 +11,9 @@ public class BujoModelImpl implements BujoModel {
   public List<Event> allEvents;
   public List<Task> allTasks;
   public Theme theme;
+  public int maxEventsPerDay;
+  public int maxTasksPerDay;
+
 
   public BujoModelImpl() {
     this.days = new ArrayList<>();
@@ -18,6 +21,8 @@ public class BujoModelImpl implements BujoModel {
     this.allEvents = new ArrayList<>();
     this.allTasks = new ArrayList<>();
     this.theme = null;
+    this.maxEventsPerDay = 0;
+    this.maxTasksPerDay = 0;
   }
 
   /**
@@ -37,13 +42,13 @@ public class BujoModelImpl implements BujoModel {
   public void addTask(Task task, String day) {
     this.allTasks.add(task);
     switch (day.toLowerCase()) {
-      case "sunday" -> days.get(0).tasks.add(task);
-      case "monday" -> days.get(1).tasks.add(task);
-      case "tuesday" -> days.get(2).tasks.add(task);
-      case "wednesday" -> days.get(3).tasks.add(task);
-      case "thursday" -> days.get(4).tasks.add(task);
-      case "friday" -> days.get(5).tasks.add(task);
-      case "saturday" -> days.get(6).tasks.add(task);
+      case "sunday" -> days.get(0).addTasks(task, maxTasksPerDay);
+      case "monday" -> days.get(1).addTasks(task, maxTasksPerDay);
+      case "tuesday" -> days.get(2).addTasks(task, maxTasksPerDay);
+      case "wednesday" -> days.get(3).addTasks(task, maxTasksPerDay);
+      case "thursday" -> days.get(4).addTasks(task, maxTasksPerDay);
+      case "friday" -> days.get(5).addTasks(task, maxTasksPerDay);
+      case "saturday" -> days.get(6).addTasks(task, maxTasksPerDay);
       default ->  {
         throw new IllegalArgumentException("Day entered is invalid");
       }
@@ -58,13 +63,13 @@ public class BujoModelImpl implements BujoModel {
   public void addEvent(Event event, String day) {
     this.allEvents.add(event);
     switch (day.toLowerCase()) {
-      case "sunday" -> days.get(0).events.add(event);
-      case "monday" -> days.get(1).events.add(event);
-      case "tuesday" -> days.get(2).events.add(event);
-      case "wednesday" -> days.get(3).events.add(event);
-      case "thursday" -> days.get(4).events.add(event);
-      case "friday" -> days.get(5).events.add(event);
-      case "saturday" -> days.get(6).events.add(event);
+      case "sunday" -> days.get(0).addEvent(event, maxEventsPerDay);
+      case "monday" -> days.get(1).addEvent(event, maxEventsPerDay);
+      case "tuesday" -> days.get(2).addEvent(event, maxEventsPerDay);
+      case "wednesday" -> days.get(3).addEvent(event, maxEventsPerDay);
+      case "thursday" -> days.get(4).addEvent(event, maxEventsPerDay);
+      case "friday" -> days.get(5).addEvent(event, maxEventsPerDay);
+      case "saturday" -> days.get(6).addEvent(event, maxEventsPerDay);
       default ->  {
         throw new IllegalArgumentException("Day entered is invalid");
       }
@@ -110,4 +115,13 @@ public class BujoModelImpl implements BujoModel {
   public List<Event> getEvents() {
     return this.allEvents;
   }
+
+  public void setMaxEventsPerDay(int maxEventsPerDay) {
+    this.maxEventsPerDay = maxEventsPerDay;
+  }
+
+  public void setMaxTasksPerDay(int maxTasksPerDay) {
+    this.maxTasksPerDay = maxTasksPerDay;
+  }
+
 }

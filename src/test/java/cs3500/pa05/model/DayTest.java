@@ -35,15 +35,15 @@ class DayTest {
   @Test
   void testAddEvent() {
     assertEquals(0, day1.events.size());
-    day1.addEvent(event1);
+    day1.addEvent(event1, 10);
     assertEquals(1, day1.events.size());
-    day1.addEvent(event2);
+    day1.addEvent(event2, 10);
     assertEquals(2, day1.events.size());
 
     assertEquals(0, day2.events.size());
-    day2.addEvent(event3);
+    day2.addEvent(event3, 10);
     assertEquals(1, day2.events.size());
-    day2.addEvent(event4);
+    day2.addEvent(event4, 10);
     assertEquals(2, day2.events.size());
 
   }
